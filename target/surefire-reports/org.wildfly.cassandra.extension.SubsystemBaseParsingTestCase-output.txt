@@ -1,2 +1,0 @@
-Aug 08, 2014 10:43:19 AM org.jboss.msc.service.ServiceContainerImpl <clinit>
-INFO: JBoss MSC version 1.2.0.Final
