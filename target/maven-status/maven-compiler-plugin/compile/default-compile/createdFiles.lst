@@ -1,0 +1,8 @@
+org/wildfly/cassandra/extension/SubsystemAdd$1.class
+org/wildfly/cassandra/extension/SubsystemRemove.class
+org/wildfly/cassandra/deployment/SubsystemDeploymentProcessor.class
+org/wildfly/cassandra/extension/SubsystemExtension.class
+org/wildfly/cassandra/extension/SubsystemDefinition.class
+org/wildfly/cassandra/extension/SubsystemExtension$1.class
+org/wildfly/cassandra/extension/SubsystemExtension$SubsystemParser.class
+org/wildfly/cassandra/extension/SubsystemAdd.class

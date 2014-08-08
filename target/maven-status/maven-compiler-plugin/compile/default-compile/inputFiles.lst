@@ -1,0 +1,5 @@
+/Users/hbraun/dev/prj/cassandra/src/main/java/org/wildfly/cassandra/extension/SubsystemAdd.java
+/Users/hbraun/dev/prj/cassandra/src/main/java/org/wildfly/cassandra/extension/SubsystemRemove.java
+/Users/hbraun/dev/prj/cassandra/src/main/java/org/wildfly/cassandra/deployment/SubsystemDeploymentProcessor.java
+/Users/hbraun/dev/prj/cassandra/src/main/java/org/wildfly/cassandra/extension/SubsystemExtension.java
+/Users/hbraun/dev/prj/cassandra/src/main/java/org/wildfly/cassandra/extension/SubsystemDefinition.java
