@@ -79,6 +79,15 @@
                         <descriptor>src/main/assembly/module-assembly.xml</descriptor>
                     </descriptors>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>make-module</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -207,7 +216,6 @@
                         <artifactId>commons-logging</artifactId>
                     </exclusion>
                 </exclusions>
-                <scope>runtime</scope>
             </dependency>
 
             <dependency>
@@ -269,7 +277,13 @@
                     <artifactId>commons-logging</artifactId>
                 </exclusion>
             </exclusions>
-            <scope>runtime</scope>
+        </dependency>
+
+        <!-- not part of cassandra-all.jar -->
+        <dependency>
+        	<groupId>org.yaml</groupId>
+        	<artifactId>snakeyaml</artifactId>
+        	<version>1.13</version>
         </dependency>
 
         <dependency>

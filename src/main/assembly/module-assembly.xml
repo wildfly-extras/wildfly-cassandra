@@ -21,6 +21,7 @@
             <useTransitiveFiltering>true</useTransitiveFiltering>
             <outputDirectory>modules/system/layers/base/org/wildfly/cassandra/main</outputDirectory>
             <includes>
+                <include>org.apache.cassandra:cassandra-all</include>
                 <include>org.xerial.snappy:snappy-java</include>
                 <include>net.jpountz.lz4:lz4</include>
                 <include>com.ning:compress-lzf</include>
@@ -48,6 +49,8 @@
                     <include>org.apache.httpcomponents:httpcore</include>
                 <include>org.apache.cassandra:cassandra-thrift</include>
                 <include>com.github.stephenc:jamm:jar</include>
+
+                <include>org.yaml:snakeyaml</include>
             </includes>
         </dependencySet>
 

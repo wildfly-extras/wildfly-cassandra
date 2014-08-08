@@ -6,6 +6,7 @@
     <resources>
         <artifact name="org.wildfly:cassandra:1.0-SNAPSHOT"/>
 
+        <resource-root path="cassandra-all-2.0.6.jar"/>
         <resource-root path="httpclient-4.2.5.jar"/>
         <resource-root path="httpcore-4.2.4.jar"/>
         <resource-root path="commons-codec-1.2.jar"/>
@@ -35,10 +36,11 @@
         <resource-root path="super-csv-2.1.0.jar"/>
         <resource-root path="cassandra-thrift-2.0.6.jar"/>
         <resource-root path="jamm-0.2.5.jar"/>
-
+        <resource-root path="snakeyaml-1.13.jar"/>
     </resources>
 
     <dependencies>
+        <module name="org.slf4j"/>
         <module name="javax.api"/>
         <module name="org.jboss.staxmapper"/>
         <module name="org.jboss.as.controller"/>
