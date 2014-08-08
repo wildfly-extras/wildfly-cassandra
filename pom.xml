@@ -24,17 +24,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-   <!-- <parent>
-        <groupId>org.wildfly</groupId>
-        <artifactId>wildfly-parent</artifactId>
-        <version>9.0.0.Alpha1-SNAPSHOT</version>
-    </parent>-->
+    <!-- <parent>
+         <groupId>org.wildfly</groupId>
+         <artifactId>wildfly-parent</artifactId>
+         <version>9.0.0.Alpha1-SNAPSHOT</version>
+     </parent>-->
 
     <groupId>org.wildfly</groupId>
     <artifactId>cassandra</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>WildFly: Subsystem Artifact</name>
+    <name>WildFly: Cassandra Extension</name>
 
     <packaging>jar</packaging>
 
@@ -43,14 +43,15 @@
         <version.junit>4.11</version.junit>
         <version.org.jboss.logging.jboss-logging>3.1.4.GA</version.org.jboss.logging.jboss-logging>
         <version.org.jboss.logging.jboss-logging-tools>1.2.0.Final</version.org.jboss.logging.jboss-logging-tools>
+        <version.cassandra.all>2.0.6</version.cassandra.all>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>org.wildfly.cassandra</module.name>
     </properties>
 
     <scm>
-        <connection>scm:git:https://github.com/wildfly/archetypes.git</connection>
-        <developerConnection>scm:git:https://github.com/wildfly/archetypes.git</developerConnection>
-        <url>https://github.com/wildfly/archetypes/</url>
+        <connection>scm:git:https://github.com/heiko-braun/wildfly-cassandra.git</connection>
+        <developerConnection>scm:git:https://github.com/heiko-braun/wildfly-cassandra.git</developerConnection>
+        <url>https://github.com/heiko-braun/wildfly-cassandra</url>
     </scm>
 
     <licenses>
@@ -66,7 +67,20 @@
         <!-- Maven will append the version to the finalName (which is the name
            given to the generated war, and hence the context root) -->
         <finalName>${project.artifactId}</finalName>
+
         <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/assembly/module-assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
@@ -95,19 +109,7 @@
                     <forkMode>once</forkMode>
                 </configuration>
             </plugin>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <filters>
-                        <filter>src/assemble/filter.properties</filter>
-                    </filters>
-                    <descriptors>
-                        <descriptor>src/assemble/distribution.xml</descriptor>
-                    </descriptors>
-                </configuration>
-            </plugin>
-            <plugin>
+            <!--plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <inherited>false</inherited>
@@ -121,7 +123,7 @@
                         <phase>package</phase>
                         <configuration>
                             <target>
-                                <!-- Replace the '.' in ${module.name} with '/' to get its path  -->
+
                                 <tempfile property="temp.file" />
                                 <echo message="${module.name}" file="${temp.file}" />
                                 <replace file="${temp.file}" token="." value="/" />
@@ -139,7 +141,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin-->
         </plugins>
     </build>
 
@@ -167,6 +169,7 @@
                 <artifactId>jboss-logging</artifactId>
                 <version>${version.org.jboss.logging.jboss-logging}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.jboss.logging</groupId>
                 <artifactId>jboss-logging-annotations</artifactId>
@@ -185,6 +188,28 @@
                 <optional>true</optional>
                 <version>${version.org.jboss.logging.jboss-logging-tools}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.apache.cassandra</groupId>
+                <artifactId>cassandra-all</artifactId>
+                <version>${version.cassandra.all}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+                <scope>runtime</scope>
+            </dependency>
+
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -209,6 +234,44 @@
             <type>pom</type>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging-annotations</artifactId>
+            <!-- This is a compile-time dependency of this project, but is not needed at compile or runtime by other
+                  projects that depend on this project.-->
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging-processor</artifactId>
+            <!-- This is a compile-time dependency of this project, but is not needed at compile or runtime by other
+                  projects that depend on this project.-->
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cassandra</groupId>
+            <artifactId>cassandra-all</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+            <scope>runtime</scope>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

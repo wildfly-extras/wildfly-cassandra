@@ -26,14 +26,12 @@ public class CassandraService implements Service<CassandraService> {
 
     @Override
     public void start(StartContext context) throws StartException {
-        //CassandraLogger.LOGGER.infof("Starting embedded cassandra service '%s'.", suffix);
-        System.out.println("Starting embedded cassandra service");
+        CassandraLogger.LOGGER.infof("Starting embedded cassandra service '%s'.", suffix);
     }
 
     @Override
     public void stop(StopContext context) {
-        //CassandraLogger.LOGGER.infof("Stopping cassandra service '%s'.", suffix);
-        System.out.println("Stopping embedded cassandra service");
+        CassandraLogger.LOGGER.infof("Stopping cassandra service '%s'.", suffix);
     }
 
     public static ServiceName createServiceName(String suffix) {
