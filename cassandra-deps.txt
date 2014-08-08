@@ -1,0 +1,64 @@
+
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ cassandra-unit ---
+[INFO] org.cassandraunit:cassandra-unit:jar:2.0.2.2-SNAPSHOT
+[INFO] +- com.datastax.cassandra:cassandra-driver-core:jar:2.0.1:compile
+[INFO] |  +- io.netty:netty:jar:3.9.0.Final:compile
+[INFO] |  \- com.codahale.metrics:metrics-core:jar:3.0.2:compile
+[INFO] +- org.mockito:mockito-core:jar:1.8.5:test
+[INFO] |  +- org.hamcrest:hamcrest-core:jar:1.1:test
+[INFO] |  \- org.objenesis:objenesis:jar:1.0:test
+[INFO] +- junit:junit:jar:4.8.2:compile
+[INFO] +- org.hamcrest:hamcrest-all:jar:1.1:compile
+
+
+[INFO] +- org.apache.cassandra:cassandra-all:jar:2.0.6:compile
+[INFO] |  +- org.xerial.snappy:snappy-java:jar:1.0.5:compile
+[INFO] |  +- net.jpountz.lz4:lz4:jar:1.2.0:compile
+[INFO] |  +- com.ning:compress-lzf:jar:0.8.4:compile
+[INFO] |  +- com.google.guava:guava:jar:15.0:compile
+[INFO] |  +- commons-codec:commons-codec:jar:1.2:compile
+[INFO] |  +- org.apache.commons:commons-lang3:jar:3.1:compile
+[INFO] |  +- org.antlr:antlr:jar:3.2:compile
+[INFO] |  |  \- org.antlr:antlr-runtime:jar:3.2:compile
+[INFO] |  |     \- org.antlr:stringtemplate:jar:3.2:compile
+[INFO] |  |        \- antlr:antlr:jar:2.7.7:compile
+[INFO] |  +- org.codehaus.jackson:jackson-core-asl:jar:1.9.2:compile
+[INFO] |  +- org.codehaus.jackson:jackson-mapper-asl:jar:1.9.2:compile
+[INFO] |  +- jline:jline:jar:1.0:compile
+[INFO] |  +- com.googlecode.json-simple:json-simple:jar:1.1:compile
+[INFO] |  +- com.github.stephenc.high-scale-lib:high-scale-lib:jar:1.1.2:compile
+[INFO] |  +- edu.stanford.ppl:snaptree:jar:0.1:compile
+[INFO] |  +- org.mindrot:jbcrypt:jar:0.3m:compile
+[INFO] |  +- com.yammer.metrics:metrics-core:jar:2.2.0:compile
+[INFO] |  +- com.addthis.metrics:reporter-config:jar:2.1.0:compile
+[INFO] |  |  \- org.hibernate:hibernate-validator:jar:4.3.0.Final:compile
+[INFO] |  |     +- javax.validation:validation-api:jar:1.0.0.GA:compile
+[INFO] |  |     \- org.jboss.logging:jboss-logging:jar:3.1.0.CR2:compile
+[INFO] |  +- com.thinkaurelius.thrift:thrift-server:jar:0.3.3:compile
+[INFO] |  |  \- com.lmax:disruptor:jar:3.0.1:compile
+[INFO] |  +- net.sf.supercsv:super-csv:jar:2.1.0:compile
+[INFO] |  +- org.apache.thrift:libthrift:jar:0.9.1:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpclient:jar:4.2.5:compile
+[INFO] |  |  \- org.apache.httpcomponents:httpcore:jar:4.2.4:compile
+[INFO] |  +- org.apache.cassandra:cassandra-thrift:jar:2.0.6:compile
+[INFO] |  \- com.github.stephenc:jamm:jar:0.2.5:compile
+
+
+
+[INFO] +- com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:jar:1.3:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.6.1:compile
+[INFO] |  \- log4j:log4j:jar:1.2.16:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.6.1:compile
+[INFO] +- com.sun.xml.bind:jaxb-impl:jar:2.2.4-1:compile
+[INFO] |  \- javax.xml.bind:jaxb-api:jar:2.2.3:compile
+[INFO] |     +- javax.xml.stream:stax-api:jar:1.0-2:compile
+[INFO] |     \- javax.activation:activation:jar:1.1:compile
+[INFO] +- org.yaml:snakeyaml:jar:1.11:compile
+[INFO] +- org.hectorclient:hector-core:jar:1.1-4:compile
+[INFO] |  +- commons-pool:commons-pool:jar:1.5.3:compile
+[INFO] |  +- com.github.stephenc.eaio-uuid:uuid:jar:3.2.0:compile
+[INFO] |  \- com.ecyrd.speed4j:speed4j:jar:0.9:compile
+[INFO] +- commons-lang:commons-lang:jar:2.6:compile
+[INFO] +- commons-cli:commons-cli:jar:1.2:compile
+[INFO] \- commons-io:commons-io:jar:2.1:test
+
