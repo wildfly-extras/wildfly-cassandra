@@ -1,0 +1,10 @@
+
+# Add this to standalone.xml
+
+
+<extensions>
+    <extension module="org.wildfly.cassandra"/>
+</extensions>
+
+<subsystem xmlns="urn:wildfly:cassandra:1.0">
+</subsystem>

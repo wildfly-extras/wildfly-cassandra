@@ -2,6 +2,9 @@ package org.wildfly.cassandra.extension;
 
 import java.util.List;
 
+import org.jboss.as.controller.PathAddress;
+import org.jboss.as.controller.descriptions.ModelDescriptionConstants;
+import org.jboss.msc.service.ServiceName;
 import org.wildfly.cassandra.deployment.SubsystemDeploymentProcessor;
 import org.jboss.as.controller.AbstractBoottimeAddStepHandler;
 import org.jboss.as.controller.OperationContext;
@@ -43,15 +46,16 @@ class SubsystemAdd extends AbstractBoottimeAddStepHandler {
             List<ServiceController<?>> newControllers)
             throws OperationFailedException {
 
-        //Add deployment processors here
-        //Remove this if you don't need to hook into the deployers, or you can add as many as you like
-        //see SubDeploymentProcessor for explanation of the phases
-        context.addStep(new AbstractDeploymentChainStep() {
-            public void execute(DeploymentProcessorTarget processorTarget) {
-                processorTarget.addDeploymentProcessor(SubsystemExtension.SUBSYSTEM_NAME, SubsystemDeploymentProcessor.PHASE, SubsystemDeploymentProcessor.PRIORITY, new SubsystemDeploymentProcessor());
+        String suffix = PathAddress.pathAddress(operation.get(ModelDescriptionConstants.ADDRESS)).getLastElement().getValue();
 
-            }
-        }, OperationContext.Stage.RUNTIME);
+        CassandraService service = new CassandraService(suffix);
+        ServiceName name = CassandraService.createServiceName(suffix);
+        ServiceController<CassandraService> controller = context.getServiceTarget()
+                .addService(name, service)
+                .addListener(verificationHandler)
+                .setInitialMode(ServiceController.Mode.ACTIVE)
+                .install();
+        newControllers.add(controller);
 
     }
 }

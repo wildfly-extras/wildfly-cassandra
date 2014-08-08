@@ -22,6 +22,8 @@ class SubsystemRemove extends AbstractRemoveStepHandler {
     protected void performRuntime(OperationContext context, ModelNode operation, ModelNode model) throws OperationFailedException {
         //Remove any services installed by the corresponding add handler here
         //context.removeService(ServiceName.of("some", "name"));
+
+        // TODO: removal of service: What about the suffix?
     }
 
 
