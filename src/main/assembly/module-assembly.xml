@@ -12,6 +12,7 @@
             <outputDirectory>modules/system/layers/base/org/wildfly/cassandra/main</outputDirectory>
             <includes>
                 <include>module.xml</include>
+                <include>cassandra.yaml</include>
             </includes>
         </fileSet>
     </fileSets>

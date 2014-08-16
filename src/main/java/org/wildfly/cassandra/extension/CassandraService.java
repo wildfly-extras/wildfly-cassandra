@@ -1,8 +1,6 @@
 package org.wildfly.cassandra.extension;
 
-import org.apache.cassandra.exceptions.ConfigurationException;
 import org.apache.cassandra.service.CassandraDaemon;
-import org.apache.thrift.transport.TTransportException;
 import org.jboss.msc.service.Service;
 import org.jboss.msc.service.ServiceName;
 import org.jboss.msc.service.StartContext;
@@ -12,7 +10,6 @@ import org.wildfly.cassandra.logging.CassandraLogger;
 import org.wildfly.cassandra.server.EmbeddedServerHelper;
 
 import java.io.File;
-import java.io.IOException;
 
 /**
  * @author Heiko Braun
@@ -34,13 +31,27 @@ public class CassandraService implements Service<CassandraService> {
 
     @Override
     public void start(StartContext context) throws StartException {
-        CassandraLogger.LOGGER.infof("Starting embedded cassandra service '%s'.", suffix);
+
         try {
-            cassandraDaemon = new EmbeddedServerHelper().startEmbeddedCassandra(
-                    new File(System.getProperty("user.home") + "/cassandra.yaml"),
-                    System.getProperty("java.io.tmpdir"),
-                    3000
-            );
+            File configFile = new File(System.getProperty("jboss.modules.dir")
+                    + "/system/layers/base/org/wildfly/cassandra/main/cassandra.yaml");
+
+            // standalone or domain temp dir
+            String tempDir = System.getProperty("jboss.domain.temp.dir")!=null ?
+                    System.getProperty("jboss.domain.temp.dir") : System.getProperty("jboss.server.temp.dir");
+
+            // TODO: integrate cassandra configuration or at least the config file location
+            if(configFile.exists()) {
+                CassandraLogger.LOGGER.infof("Starting embedded cassandra service '%s' with config: %s", suffix, configFile.getAbsolutePath());
+
+                cassandraDaemon = new EmbeddedServerHelper().startEmbeddedCassandra(
+                        configFile, tempDir, 3000
+                );
+            }
+            else
+            {
+                context.failed(new StartException("Failed to start cassandra service. Configuration file is missing:"+configFile.getAbsolutePath()));
+            }
         } catch (Throwable e) {
             context.failed(new StartException(e));
         }
@@ -48,9 +59,9 @@ public class CassandraService implements Service<CassandraService> {
 
     @Override
     public void stop(StopContext context) {
-        CassandraLogger.LOGGER.infof("Stopping cassandra service '%s'.", suffix);
         if(cassandraDaemon!=null)
         {
+            CassandraLogger.LOGGER.infof("Stopping cassandra service '%s'.", suffix);
             cassandraDaemon.deactivate();
         }
     }
