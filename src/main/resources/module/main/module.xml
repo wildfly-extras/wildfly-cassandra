@@ -37,6 +37,9 @@
         <resource-root path="cassandra-thrift-2.0.6.jar"/>
         <resource-root path="jamm-0.2.5.jar"/>
         <resource-root path="snakeyaml-1.13.jar"/>
+        <resource-root path="concurrentlinkedhashmap-lru-1.4.jar"/>
+
+        <resource-root path="netty-3.6.6.Final.jar"/> <!-- TODO: conflicts with netty 4.0.20 in wildfly -->
     </resources>
 
     <dependencies>

@@ -51,6 +51,9 @@
                 <include>com.github.stephenc:jamm:jar</include>
 
                 <include>org.yaml:snakeyaml</include>
+
+                <include>com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru</include>
+                <include>io.netty:netty</include>
             </includes>
         </dependencySet>
 

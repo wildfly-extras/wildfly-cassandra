@@ -279,6 +279,12 @@
             </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>com.googlecode.concurrentlinkedhashmap</groupId>
+            <artifactId>concurrentlinkedhashmap-lru</artifactId>
+            <version>1.4</version>
+        </dependency>
+
         <!-- not part of cassandra-all.jar -->
         <dependency>
         	<groupId>org.yaml</groupId>
