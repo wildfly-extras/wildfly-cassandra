@@ -20,7 +20,7 @@ public class WildflyConfigLoader implements ConfigurationLoader {
         // for now relay on an external yaml configuration file
 
         File configFile = new File(System.getProperty("jboss.modules.dir")
-                            + "/system/layers/base/org/wildfly/cassandra/main/cassandra.yaml");
+                            + "/system/layers/base/org/wildfly/cassandra/main/conf/cassandra.yaml");
 
         System.setProperty("cassandra.config", "file:" + configFile.getAbsolutePath());
         System.setProperty("cassandra-foreground", "true");

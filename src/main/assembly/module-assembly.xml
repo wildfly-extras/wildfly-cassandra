@@ -12,10 +12,17 @@
             <outputDirectory>modules/system/layers/base/org/wildfly/cassandra/main</outputDirectory>
             <includes>
                 <include>module.xml</include>
-                <include>cassandra.yaml</include>
             </includes>
         </fileSet>
-    </fileSets>
+           <fileSet>
+               <directory>${project.basedir}/src/main/resources/module/main</directory>
+               <outputDirectory>modules/system/layers/base/org/wildfly/cassandra/main/conf</outputDirectory>
+               <includes>
+                   <include>cassandra.yaml</include>
+                   <include>cassandra-rackdc.properties</include>
+               </includes>
+           </fileSet>
+       </fileSets>
     <dependencySets>
         <dependencySet>
             <useTransitiveDependencies>true</useTransitiveDependencies>

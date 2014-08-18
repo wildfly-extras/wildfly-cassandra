@@ -37,7 +37,7 @@ public class CassandraService implements Service<CassandraService> {
 
         try {
             File configFile = new File(System.getProperty("jboss.modules.dir")
-                    + "/system/layers/base/org/wildfly/cassandra/main/cassandra.yaml");
+                    + "/system/layers/base/org/wildfly/cassandra/main/conf/cassandra.yaml");
 
             if(configFile.exists()) {
                 CassandraLogger.LOGGER.infof("Starting embedded cassandra service '%s'");

@@ -40,6 +40,7 @@
         <resource-root path="concurrentlinkedhashmap-lru-1.4.jar"/>
 
         <resource-root path="netty-3.6.6.Final.jar"/> <!-- TODO: conflicts with netty 4.0.20 in wildfly -->
+        <resource-root path="conf"/>
     </resources>
 
     <dependencies>
