@@ -7,4 +7,5 @@
 </extensions>
 
 <subsystem xmlns="urn:wildfly:cassandra:1.0">
+    <cluster-name>Wildfly-Standalone</cluster-name>
 </subsystem>

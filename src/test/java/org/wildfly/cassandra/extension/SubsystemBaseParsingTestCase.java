@@ -20,6 +20,7 @@ public class SubsystemBaseParsingTestCase extends AbstractSubsystemBaseTest {
     @Override
     protected String getSubsystemXml() throws IOException {
         return "<subsystem xmlns=\"" + SubsystemExtension.NAMESPACE + "\">" +
+                "<cluster-name>Wildfly-Cluster</cluster-name>"+
                 "</subsystem>";
     }
 

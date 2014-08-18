@@ -75,6 +75,7 @@ public class SubsystemExtension implements Extension {
         final ModelNode subsystem = new ModelNode();
         subsystem.get(OP).set(ADD);
         subsystem.get(OP_ADDR).add(SUBSYSTEM, SUBSYSTEM_NAME);
+        subsystem.get("cluster-name").set("Wildfly-Cluster");
         return subsystem;
     }
 
