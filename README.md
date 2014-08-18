@@ -37,7 +37,7 @@ to the wildfly server configuration file:
 The C* configuration has not ported to wildfly yet. The current subsystem configuration still delegates to an external
 cassandra.yaml file, that resides with the module:
 
-`modules/system/layers/base/org/wildfly/cassandra/main/cassandra.yaml`
+`modules/system/layers/base/org/wildfly/cassandra/main/conf/cassandra.yaml`
 
 ##Cassandra Documentation
 
