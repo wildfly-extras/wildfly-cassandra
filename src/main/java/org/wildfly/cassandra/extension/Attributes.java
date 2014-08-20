@@ -16,29 +16,6 @@ import javax.xml.stream.XMLStreamWriter;
  */
 public class Attributes {
 
-    static final SimpleAttributeDefinition cluster_name = SimpleAttributeDefinitionBuilder.create("cluster-name", ModelType.STRING, false)
-            .setAllowExpression(true)
-            .setAttributeMarshaller(new DefaultAttributeMarshaller() {
-                @Override
-                public void marshallAsElement(final AttributeDefinition attribute, final ModelNode resourceModel, final XMLStreamWriter writer) throws XMLStreamException {
-                    marshallAsElement(attribute, resourceModel, true, writer);
-                }
-
-                @Override
-                public void marshallAsElement(final AttributeDefinition attribute, final ModelNode resourceModel, final boolean marshallDefault, final XMLStreamWriter writer) throws XMLStreamException {
-
-                    writer.writeStartElement("cluster-name");
-
-                    final String value = resourceModel.get("cluster-name").asString();
-                    writer.writeCharacters(value);
-
-                    writer.writeEndElement();
-                }
-            })
-            .setRestartJVM()
-            .build();
-
-
     static final SimpleAttributeDefinition num_attributes = SimpleAttributeDefinitionBuilder.create("num-attributes", ModelType.LONG, true)
             .setAllowExpression(true)
             .setAttributeMarshaller(new DefaultAttributeMarshaller() {

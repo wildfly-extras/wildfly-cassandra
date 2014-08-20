@@ -10,12 +10,12 @@ import org.jboss.dmr.ModelNode;
  *
  * @author <a href="kabir.khan@jboss.com">Kabir Khan</a>
  */
-class SubsystemRemove extends AbstractRemoveStepHandler {
+class CassandraSubsystemRemove extends AbstractRemoveStepHandler {
 
-    static final SubsystemRemove INSTANCE = new SubsystemRemove();
+    static final CassandraSubsystemRemove INSTANCE = new CassandraSubsystemRemove();
 
 
-    private SubsystemRemove() {
+    private CassandraSubsystemRemove() {
     }
 
     @Override

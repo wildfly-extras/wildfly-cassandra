@@ -6,6 +6,7 @@ import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.OP;
 import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.OP_ADDR;
 import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.SUBSYSTEM;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.jboss.as.controller.PathAddress;
@@ -28,8 +29,12 @@ import org.junit.Test;
 public class SubsystemParsingTestCase extends AbstractSubsystemTest {
 
     public SubsystemParsingTestCase() {
-        super(SubsystemExtension.SUBSYSTEM_NAME, new SubsystemExtension());
+        super(CassandraExtension.SUBSYSTEM_NAME, new CassandraExtension());
     }
+
+    protected String getSubsystemXml() throws IOException {
+            return readResource("/default-subsystem.xml");
+        }
 
     /**
      * Tests that the xml is parsed into the correct operations
@@ -37,9 +42,7 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
     @Test
     public void testParseSubsystem() throws Exception {
         //Parse the subsystem xml into operations
-        String subsystemXml =
-                "<subsystem xmlns=\"" + SubsystemExtension.NAMESPACE + "\">" +
-                        "</subsystem>";
+        String subsystemXml = getSubsystemXml();
         List<ModelNode> operations = super.parse(subsystemXml);
 
         ///Check that we have the expected number of operations
@@ -52,7 +55,7 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
         Assert.assertEquals(1, addr.size());
         PathElement element = addr.getElement(0);
         Assert.assertEquals(SUBSYSTEM, element.getKey());
-        Assert.assertEquals(SubsystemExtension.SUBSYSTEM_NAME, element.getValue());
+        Assert.assertEquals(CassandraExtension.SUBSYSTEM_NAME, element.getValue());
     }
 
     /**
@@ -61,14 +64,12 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
     @Test
     public void testInstallIntoController() throws Exception {
         //Parse the subsystem xml and install into the controller
-        String subsystemXml =
-                "<subsystem xmlns=\"" + SubsystemExtension.NAMESPACE + "\">" +
-                        "</subsystem>";
+        String subsystemXml = getSubsystemXml();
         KernelServices services = super.createKernelServicesBuilder(null).setSubsystemXml(subsystemXml).build();
 
         //Read the whole model and make sure it looks as expected
         ModelNode model = services.readWholeModel();
-        Assert.assertTrue(model.get(SUBSYSTEM).hasDefined(SubsystemExtension.SUBSYSTEM_NAME));
+        Assert.assertTrue(model.get(SUBSYSTEM).hasDefined(CassandraExtension.SUBSYSTEM_NAME));
     }
 
     /**
@@ -78,9 +79,7 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
     @Test
     public void testParseAndMarshalModel() throws Exception {
         //Parse the subsystem xml and install into the first controller
-        String subsystemXml =
-                "<subsystem xmlns=\"" + SubsystemExtension.NAMESPACE + "\">" +
-                        "</subsystem>";
+        String subsystemXml = getSubsystemXml();
         KernelServices servicesA = super.createKernelServicesBuilder(null).setSubsystemXml(subsystemXml).build();
         //Get the model and the persisted xml from the first controller
         ModelNode modelA = servicesA.readWholeModel();
@@ -100,9 +99,7 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
     @Test
     public void testSubsystemRemoval() throws Exception {
         //Parse the subsystem xml and install into the first controller
-        String subsystemXml =
-                "<subsystem xmlns=\"" + SubsystemExtension.NAMESPACE + "\">" +
-                        "</subsystem>";
+        String subsystemXml = getSubsystemXml();
         KernelServices services = super.createKernelServicesBuilder(null).setSubsystemXml(subsystemXml).build();
         //Checks that the subsystem was removed from the model
         super.assertRemoveSubsystemResources(services);

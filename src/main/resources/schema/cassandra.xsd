@@ -15,6 +15,9 @@
     </xs:complexType>
 
     <xs:complexType name="cluster-nameType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string"/>
+        </xs:simpleContent>
     </xs:complexType>
 
 </xs:schema>

@@ -1,0 +1,3 @@
+<subsystem xmlns="urn:wildfly:cassandra:1.0">
+    <cluster-name>Wildfly Cluster</cluster-name>
+</subsystem>

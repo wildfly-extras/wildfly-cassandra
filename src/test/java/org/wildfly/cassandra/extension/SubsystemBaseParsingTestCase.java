@@ -13,15 +13,12 @@ import java.io.IOException;
 public class SubsystemBaseParsingTestCase extends AbstractSubsystemBaseTest {
 
     public SubsystemBaseParsingTestCase() {
-        super(SubsystemExtension.SUBSYSTEM_NAME, new SubsystemExtension());
+        super(CassandraExtension.SUBSYSTEM_NAME, new CassandraExtension());
     }
-
 
     @Override
     protected String getSubsystemXml() throws IOException {
-        return "<subsystem xmlns=\"" + SubsystemExtension.NAMESPACE + "\">" +
-                "<cluster-name>Wildfly-Cluster</cluster-name>"+
-                "</subsystem>";
+        return readResource("/default-subsystem.xml");
     }
 
 }

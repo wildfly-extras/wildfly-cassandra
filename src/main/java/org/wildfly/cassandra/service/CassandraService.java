@@ -67,10 +67,6 @@ public class CassandraService implements Service<CassandraService> {
         }
     }
 
-    public static ServiceName createServiceName(String suffix) {
-        return ServiceName.JBOSS.append("cassandra", suffix);
-    }
-
     private static void cleanupAndLeaveDirs() throws IOException {
         mkdirs();
         cleanup();

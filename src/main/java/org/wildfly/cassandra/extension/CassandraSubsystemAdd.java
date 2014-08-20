@@ -18,11 +18,12 @@ import org.wildfly.cassandra.service.CassandraService;
  *
  * @author <a href="kabir.khan@jboss.com">Kabir Khan</a>
  */
-class SubsystemAdd extends AbstractBoottimeAddStepHandler {
+class CassandraSubsystemAdd extends AbstractBoottimeAddStepHandler {
 
-    static final SubsystemAdd INSTANCE = new SubsystemAdd();
+    static final CassandraSubsystemAdd INSTANCE = new CassandraSubsystemAdd();
+    public static final ServiceName SERVICE_NAME = ServiceName.JBOSS.append("cassandra");
 
-    private SubsystemAdd() {
+    private CassandraSubsystemAdd() {
     }
 
     /**
@@ -47,7 +48,7 @@ class SubsystemAdd extends AbstractBoottimeAddStepHandler {
         String suffix = PathAddress.pathAddress(operation.get(ModelDescriptionConstants.ADDRESS)).getLastElement().getValue();
 
         CassandraService service = new CassandraService(suffix);
-        ServiceName name = CassandraService.createServiceName(suffix);
+        ServiceName name = CassandraSubsystemAdd.SERVICE_NAME;
         ServiceController<CassandraService> controller = context.getServiceTarget()
                 .addService(name, service)
                 .addListener(verificationHandler)

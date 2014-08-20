@@ -1,1 +1,1 @@
-org.wildfly.cassandra.extension.SubsystemExtension
+org.wildfly.cassandra.extension.CassandraExtension
