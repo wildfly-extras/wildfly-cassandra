@@ -11,7 +11,6 @@ import java.util.List;
 
 class CassandraSubsystemAdd extends AbstractBoottimeAddStepHandler {
 
-    //public static final ServiceName SERVICE_NAME = ServiceName.JBOSS.append("cassandra");
     static final CassandraSubsystemAdd INSTANCE = new CassandraSubsystemAdd();
 
     private CassandraSubsystemAdd() {

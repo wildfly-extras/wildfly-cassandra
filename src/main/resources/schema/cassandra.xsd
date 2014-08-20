@@ -17,6 +17,11 @@
     <xs:complexType name="clusterType">
         <xs:attribute name="name" use="required" type="xs:string"/>
         <xs:attribute name="debug" use="optional" type="xs:boolean"/>
+        <xs:attribute name="num-attributes" use="optional" type="xs:int"/>
+        <xs:attribute name="hinted-handoff-enabled" use="optional" type="xs:boolean"/>
+        <xs:attribute name="max-hint-window-in-ms" use="optional" type="xs:long"/>
+        <xs:attribute name="hinted-handoff-throttle-in-kb" use="optional" type="xs:long"/>
+        <xs:attribute name="max-hints-delivery-threads" use="optional" type="xs:int"/>
     </xs:complexType>
 
 </xs:schema>
