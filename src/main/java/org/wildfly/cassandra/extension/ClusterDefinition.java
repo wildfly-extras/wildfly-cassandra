@@ -23,15 +23,13 @@ import java.util.List;
  */
 public class ClusterDefinition extends PersistentResourceDefinition {
 
-    static final ClusterDefinition INSTANCE = new ClusterDefinition();
-
     private final List<AccessConstraintDefinition> accessConstraints;
 
-    private ClusterDefinition() {
+    private ClusterDefinition(AttributeDefinition[] attributes) {
         super(CassandraExtension.CLUSTER_PATH,
                 CassandraExtension.getResourceDescriptionResolver(CassandraSubsystemModel.CLUSTER),
-                CassandraSubsystemAdd.INSTANCE,
-                new ServiceRemoveStepHandler(CassandraSubsystemAdd.SERVICE_NAME, CassandraSubsystemAdd.INSTANCE));
+                new ClusterAdd(attributes),
+                new ServiceRemoveStepHandler(ClusterAdd.SERVICE_NAME, new ClusterAdd(attributes)));
 
         ApplicationTypeConfig atc = new ApplicationTypeConfig(CassandraExtension.SUBSYSTEM_NAME, CassandraSubsystemModel.CLUSTER);
         accessConstraints = new ApplicationTypeAccessConstraintDefinition(atc).wrapAsList();
@@ -47,6 +45,8 @@ public class ClusterDefinition extends PersistentResourceDefinition {
     private static final AttributeDefinition[] ATTRIBUTES = {DEBUG};
 
     private static final List CHILDREN = Collections.EMPTY_LIST;
+
+    static final ClusterDefinition INSTANCE = new ClusterDefinition(ATTRIBUTES);
 
     @Override
     public void registerAttributes(final ManagementResourceRegistration rootResourceRegistration) {
@@ -70,4 +70,6 @@ public class ClusterDefinition extends PersistentResourceDefinition {
     public List<AccessConstraintDefinition> getAccessConstraints() {
         return accessConstraints;
     }
+
+
 }
