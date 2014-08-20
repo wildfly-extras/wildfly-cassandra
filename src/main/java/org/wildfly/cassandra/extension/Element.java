@@ -10,7 +10,7 @@ import java.util.Map;
 enum Element {
     UNKNOWN(null),
 
-    NAME(CassandraSubsystemModel.CLUSTER_NAME);
+    NAME(CassandraSubsystemModel.NAME);
 
     private final String name;
 

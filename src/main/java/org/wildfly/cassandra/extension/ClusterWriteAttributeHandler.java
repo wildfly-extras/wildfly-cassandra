@@ -15,14 +15,14 @@ import java.util.Collection;
  * @author Heiko Braun
  * @since 20/08/14
  */
-public class CassandraWriteAttributeHandler extends RestartParentWriteAttributeHandler {
+public class ClusterWriteAttributeHandler extends RestartParentWriteAttributeHandler {
 
-    CassandraWriteAttributeHandler(AttributeDefinition... attributeDefinitions) {
-        super(CassandraSubsystemModel.CLUSTER_NAME, attributeDefinitions);
+    ClusterWriteAttributeHandler(AttributeDefinition... attributeDefinitions) {
+        super(CassandraSubsystemModel.CLUSTER, attributeDefinitions);
     }
 
-    CassandraWriteAttributeHandler(Collection<AttributeDefinition> attributeDefinitions) {
-        super(CassandraSubsystemModel.CLUSTER_NAME, attributeDefinitions);
+    ClusterWriteAttributeHandler(Collection<AttributeDefinition> attributeDefinitions) {
+        super(CassandraSubsystemModel.CLUSTER, attributeDefinitions);
     }
 
     @Override

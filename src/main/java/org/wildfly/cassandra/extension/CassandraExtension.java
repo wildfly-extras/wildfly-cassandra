@@ -28,17 +28,23 @@ public class CassandraExtension implements Extension {
      */
     public static final String SUBSYSTEM_NAME = "cassandra";
 
+
     /**
      * The parser used for parsing our subsystem
      */
     private final CassandraSubsystemParser parser = new CassandraSubsystemParser();
 
     protected static final PathElement SUBSYSTEM_PATH = PathElement.pathElement(SUBSYSTEM, SUBSYSTEM_NAME);
+    protected static PathElement CLUSTER_PATH = PathElement.pathElement(CassandraSubsystemModel.CLUSTER);
+
     private static final String RESOURCE_NAME = CassandraExtension.class.getPackage().getName() + ".LocalDescriptions";
 
-    static StandardResourceDescriptionResolver getResourceDescriptionResolver(final String keyPrefix) {
-        String prefix = SUBSYSTEM_NAME + (keyPrefix == null ? "" : "." + keyPrefix);
-        return new StandardResourceDescriptionResolver(prefix, RESOURCE_NAME, CassandraExtension.class.getClassLoader(), true, false);
+    static StandardResourceDescriptionResolver getResourceDescriptionResolver(final String... keyPrefix) {
+        StringBuilder prefix = new StringBuilder(SUBSYSTEM_NAME);
+        for (String kp : keyPrefix) {
+            prefix.append('.').append(kp);
+        }
+        return new StandardResourceDescriptionResolver(prefix.toString(), RESOURCE_NAME, CassandraExtension.class.getClassLoader(), true, false);
     }
 
     @Override
@@ -50,7 +56,7 @@ public class CassandraExtension implements Extension {
     @Override
     public void initialize(ExtensionContext context) {
         final SubsystemRegistration subsystem = context.registerSubsystem(SUBSYSTEM_NAME, 1, 0);
-        final ManagementResourceRegistration registration = subsystem.registerSubsystemModel(CassandraSubsystemDefinition.INSTANCE);
+        final ManagementResourceRegistration registration = subsystem.registerSubsystemModel(CassandraSubsystemResource.INSTANCE);
         registration.registerOperationHandler(GenericSubsystemDescribeHandler.DEFINITION, GenericSubsystemDescribeHandler.INSTANCE);
 
         subsystem.registerXMLElementWriter(parser);

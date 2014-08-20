@@ -18,7 +18,7 @@ public class CassandraSubsystemResource extends PersistentResourceDefinition {
 
        private CassandraSubsystemResource() {
            super(CassandraExtension.SUBSYSTEM_PATH,
-                   CassandraExtension.getResourceDescriptionResolver("default"),
+                   CassandraExtension.getResourceDescriptionResolver(),
                    CassandraSubsystemAdd.INSTANCE,
                    ReloadRequiredRemoveStepHandler.INSTANCE);
        }
@@ -30,6 +30,6 @@ public class CassandraSubsystemResource extends PersistentResourceDefinition {
 
        @Override
        protected List<? extends PersistentResourceDefinition> getChildren() {
-           return Arrays.asList(CassandraSubsystemDefinition.INSTANCE);
+           return Arrays.asList(ClusterDefinition.INSTANCE);
        }
 }

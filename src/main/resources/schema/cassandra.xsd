@@ -10,14 +10,13 @@
 
     <xs:complexType name="subsystemType">
         <xs:sequence>
-            <xs:element name="cluster-name" type="cluster-nameType" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="cluster" type="clusterType" minOccurs="1" maxOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="cluster-nameType">
-        <xs:simpleContent>
-            <xs:extension base="xs:string"/>
-        </xs:simpleContent>
+    <xs:complexType name="clusterType">
+        <xs:attribute name="name" use="required" type="xs:string"/>
+        <xs:attribute name="debug" use="optional" type="xs:boolean"/>
     </xs:complexType>
 
 </xs:schema>

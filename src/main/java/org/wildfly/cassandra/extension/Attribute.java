@@ -9,7 +9,7 @@ import java.util.Map;
  */
 enum Attribute {
     UNKNOWN(null),
-    CLUSTER(CassandraSubsystemModel.CLUSTER_NAME);
+    CLUSTER(CassandraSubsystemModel.CLUSTER);
 
     private final String name;
 

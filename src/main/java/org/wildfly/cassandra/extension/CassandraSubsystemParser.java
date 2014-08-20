@@ -30,7 +30,16 @@ public class CassandraSubsystemParser implements XMLStreamConstants, XMLElementR
 
     static {
         xmlDescription = builder(CassandraSubsystemResource.INSTANCE)
-                .addAttributes(CassandraSubsystemDefinition.INSTANCE.getAttributes())
+                .addChild(
+                        builder(ClusterDefinition.INSTANCE)
+                                .addAttributes(ClusterDefinition.INSTANCE.getAttributes())
+
+                                /*.addChild(
+                                        builder(MailServerDefinition.INSTANCE_CUSTOM)
+                                                .addAttributes(MailServerDefinition.INSTANCE_CUSTOM.getAttributes())
+                                                .setXmlElementName(MailSubsystemModel.CUSTOM_SERVER)
+                                )*/
+                )
                 .build();
     }
 
