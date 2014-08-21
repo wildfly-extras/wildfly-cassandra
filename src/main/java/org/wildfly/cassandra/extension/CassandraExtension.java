@@ -29,11 +29,6 @@ public class CassandraExtension implements Extension {
     public static final String SUBSYSTEM_NAME = "cassandra";
 
 
-    /**
-     * The parser used for parsing our subsystem
-     */
-    private final CassandraSubsystemParser parser = new CassandraSubsystemParser();
-
     protected static final PathElement SUBSYSTEM_PATH = PathElement.pathElement(SUBSYSTEM, SUBSYSTEM_NAME);
     protected static PathElement CLUSTER_PATH = PathElement.pathElement(CassandraSubsystemModel.CLUSTER);
 
@@ -49,7 +44,7 @@ public class CassandraExtension implements Extension {
 
     @Override
     public void initializeParsers(ExtensionParsingContext context) {
-        context.setSubsystemXmlMapping(SUBSYSTEM_NAME, NAMESPACE, parser);
+        context.setSubsystemXmlMapping(SUBSYSTEM_NAME, NAMESPACE, CassandraSubsystemParser.INSTANCE);
     }
 
 
@@ -58,8 +53,7 @@ public class CassandraExtension implements Extension {
         final SubsystemRegistration subsystem = context.registerSubsystem(SUBSYSTEM_NAME, 1, 0);
         final ManagementResourceRegistration registration = subsystem.registerSubsystemModel(CassandraSubsystemResource.INSTANCE);
         registration.registerOperationHandler(GenericSubsystemDescribeHandler.DEFINITION, GenericSubsystemDescribeHandler.INSTANCE);
-
-        subsystem.registerXMLElementWriter(parser);
+        subsystem.registerXMLElementWriter(CassandraSubsystemParser.INSTANCE);
     }
 
 }

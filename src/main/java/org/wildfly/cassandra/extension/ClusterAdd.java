@@ -41,6 +41,9 @@ class ClusterAdd extends AbstractAddStepHandler {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void performRuntime(OperationContext context, ModelNode operation, ModelNode model, ServiceVerificationHandler verificationHandler, List<ServiceController<?>> controllers) throws OperationFailedException {
         final PathAddress address = PathAddress.pathAddress(operation.get(OP_ADDR));

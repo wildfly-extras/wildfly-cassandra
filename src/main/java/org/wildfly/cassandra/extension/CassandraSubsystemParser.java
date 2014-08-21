@@ -26,6 +26,8 @@ import static org.jboss.as.controller.PersistentResourceXMLDescription.builder;
  */
 public class CassandraSubsystemParser implements XMLStreamConstants, XMLElementReader<List<ModelNode>>, XMLElementWriter<SubsystemMarshallingContext> {
 
+    public final static CassandraSubsystemParser INSTANCE = new CassandraSubsystemParser();
+
     private static final PersistentResourceXMLDescription xmlDescription;
 
     static {
