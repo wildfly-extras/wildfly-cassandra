@@ -46,8 +46,8 @@ public class ClusterDefinition extends PersistentResourceDefinition {
                     .setRestartAllServices()
                     .build();
 
-    protected static final SimpleAttributeDefinition NUM_ATTRIBUTES =
-            new SimpleAttributeDefinitionBuilder(CassandraModel.NUM_ATTRIBUTES, ModelType.INT, true)
+    protected static final SimpleAttributeDefinition NUM_TOKENS =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.NUM_TOKENS, ModelType.INT, true)
                     .setAllowExpression(true)
                     .setDefaultValue(new ModelNode(256))
                     .setRestartAllServices()
@@ -60,32 +60,165 @@ public class ClusterDefinition extends PersistentResourceDefinition {
                     .setRestartAllServices()
                     .build();
 
-    protected static final SimpleAttributeDefinition MAX_HINT_WINDOW =
-            new SimpleAttributeDefinitionBuilder(CassandraModel.MAX_HINT_WINDOW, ModelType.LONG, true)
+    protected static final SimpleAttributeDefinition AUTHENTICATOR =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.AUTHENTICATOR, ModelType.STRING, true)
                     .setAllowExpression(true)
-                    .setDefaultValue(new ModelNode(10800000))
+                    .setDefaultValue(new ModelNode("AllowAllAuthenticator"))
                     .setRestartAllServices()
                     .build();
 
-    protected static final SimpleAttributeDefinition HINTED_THROTTLE =
-            new SimpleAttributeDefinitionBuilder(CassandraModel.HINTED_THROTTLE, ModelType.LONG, true)
+    protected static final SimpleAttributeDefinition AUTHORIZER =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.AUTHORIZER, ModelType.STRING, true)
                     .setAllowExpression(true)
-                    .setDefaultValue(new ModelNode(1024))
+                    .setDefaultValue(new ModelNode("AllowAllAuthorizer"))
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition PARTIONER =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.PARTITIONER, ModelType.STRING, true)
+                    .setAllowExpression(true)
+                    .setDefaultValue(new ModelNode("org.apache.cassandra.dht.Murmur3Partitioner"))
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition SEED_PROVIDER =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.SEED_PROVIDER, ModelType.STRING, false)
+                    .setAllowExpression(true)
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition SEEDS =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.SEEDS, ModelType.STRING, false)
+                    .setAllowExpression(true)
                     .setRestartAllServices()
                     .build();
 
 
-    protected static final SimpleAttributeDefinition HINT_DELIVERY_THREADS =
-                new SimpleAttributeDefinitionBuilder(CassandraModel.HINT_DELIVERY_THREADS, ModelType.INT, true)
-                        .setAllowExpression(true)
-                        .setDefaultValue(new ModelNode(2))
-                        .setRestartAllServices()
-                        .build();
+    protected static final SimpleAttributeDefinition LISTEN_ADDRESS =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.LISTEN_ADDRESS, ModelType.STRING, false)
+                    .setAllowExpression(true)
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition BROADCAST_ADDRESS=
+            new SimpleAttributeDefinitionBuilder(CassandraModel.BROADCAST_ADDRESS, ModelType.STRING, false)
+                    .setAllowExpression(true)
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition START_NATIVE_TRANSPORT =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.START_NATIVE_TRANSPORT, ModelType.BOOLEAN, false)
+                    .setAllowExpression(true)
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition START_RPC =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.START_RPC, ModelType.BOOLEAN, false)
+                    .setAllowExpression(true)
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition NATIVE_TRANSPORT_PORT =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.NATIVE_TRANSPORT_PORT, ModelType.LONG, true)
+                    .setAllowExpression(true)
+                    .setDefaultValue(new ModelNode(9042))
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition RPC_PORT =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.RPC_PORT, ModelType.LONG, true)
+                    .setAllowExpression(true)
+                    .setDefaultValue(new ModelNode(9160))
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition INTERNODE_AUTHENTICATOR =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.INTERNODE_AUTHENTICATOR, ModelType.STRING, true)
+                    .setAllowExpression(true)
+                    .setDefaultValue(new ModelNode("org.apache.cassandra.auth.AllowAllInternodeAuthenticator"))
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition DATA_FILE_DIR =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.DATA_FILE_DIR, ModelType.STRING, false)
+                    .setAllowExpression(true)
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition SAVED_CACHES_DIR =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.SAVED_CACHES_DIR, ModelType.STRING, false)
+                    .setAllowExpression(true)
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition COMMIT_LOG_DIR =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.COMMIT_LOG_DIR, ModelType.STRING, false)
+                    .setAllowExpression(true)
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition COMMIT_LOG_SYNC =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.COMMIT_LOG_SYNC, ModelType.STRING, true)
+                    .setAllowExpression(true)
+                    .setDefaultValue(new ModelNode("periodic"))
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition COMMIT_LOG_SYNC_PERIOD =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.COMMIT_LOG_SYNC_PERIOD, ModelType.LONG, true)
+                    .setAllowExpression(true)
+                    .setDefaultValue(new ModelNode(10000))
+                    .setRestartAllServices()
+                    .build();
+
+
+    protected static final SimpleAttributeDefinition ENDPOINT_SNITCH =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.ENDPOINT_SNITCH, ModelType.STRING, true)
+                    .setAllowExpression(true)
+                    .setDefaultValue(new ModelNode("SimpleSnitch"))
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition REQUEST_SCHEDULER =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.REQUEST_SCHEDULER, ModelType.STRING, true)
+                    .setAllowExpression(true)
+                    .setDefaultValue(new ModelNode("org.apache.cassandra.scheduler.NoScheduler"))
+                    .setRestartAllServices()
+                    .build();
+
+
+    protected static final SimpleAttributeDefinition SERVER_ENCRYPTION =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.SERVER_ENCRYPTION, ModelType.BOOLEAN, true)
+                    .setAllowExpression(true)
+                    .setDefaultValue(new ModelNode(false))
+                    .setRestartAllServices()
+                    .build();
+
+    protected static final SimpleAttributeDefinition CLIENT_ENCRYPTION =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.CLIENT_ENCRYPTION, ModelType.BOOLEAN, true)
+                    .setAllowExpression(true)
+                    .setDefaultValue(new ModelNode(false))
+                    .setRestartAllServices()
+                    .build();
+
 
     // -----------
     static final AttributeDefinition[] ATTRIBUTES = {
-            DEBUG, NUM_ATTRIBUTES,
-            HINTED_HANDOFF_ENABLED, MAX_HINT_WINDOW, HINT_DELIVERY_THREADS, HINTED_THROTTLE
+            DEBUG, NUM_TOKENS,
+            HINTED_HANDOFF_ENABLED,
+            AUTHENTICATOR, AUTHORIZER,
+            PARTIONER,
+            SEED_PROVIDER, SEEDS,
+            LISTEN_ADDRESS, BROADCAST_ADDRESS,
+            START_NATIVE_TRANSPORT, NATIVE_TRANSPORT_PORT,
+            START_RPC, RPC_PORT,
+            INTERNODE_AUTHENTICATOR,
+            DATA_FILE_DIR, SAVED_CACHES_DIR,
+            COMMIT_LOG_DIR, COMMIT_LOG_SYNC, COMMIT_LOG_SYNC_PERIOD,
+            ENDPOINT_SNITCH,
+            REQUEST_SCHEDULER,
+            CLIENT_ENCRYPTION, SERVER_ENCRYPTION
+
     };
 
     private static final List CHILDREN = Collections.EMPTY_LIST;

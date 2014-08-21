@@ -17,11 +17,41 @@
     <xs:complexType name="clusterType">
         <xs:attribute name="name" use="required" type="xs:string"/>
         <xs:attribute name="debug" use="optional" type="xs:boolean"/>
-        <xs:attribute name="num-attributes" use="optional" type="xs:int"/>
+        <xs:attribute name="num-tokens" use="optional" type="xs:int"/>
         <xs:attribute name="hinted-handoff-enabled" use="optional" type="xs:boolean"/>
-        <xs:attribute name="max-hint-window-in-ms" use="optional" type="xs:long"/>
-        <xs:attribute name="hinted-handoff-throttle-in-kb" use="optional" type="xs:long"/>
-        <xs:attribute name="max-hints-delivery-threads" use="optional" type="xs:int"/>
+
+        <xs:attribute name="authenticator" use="optional" type="xs:string"/>
+        <xs:attribute name="authorizer" use="optional" type="xs:string"/>
+        <xs:attribute name="partioner" use="optional" type="xs:string"/>
+
+        <xs:attribute name="seed-provider-class-name" use="required" type="xs:string"/>
+        <xs:attribute name="seed-provider-seeds" use="required" type="xs:string"/>
+
+        <xs:attribute name="listen-address" use="required" type="xs:string"/>
+        <xs:attribute name="broadcast-address" use="required" type="xs:string"/>
+
+        <xs:attribute name="start-native-transport" use="required" type="xs:boolean"/>
+        <xs:attribute name="native-transport-port" use="optional" type="xs:long"/>
+
+        <xs:attribute name="start-rpc" use="required" type="xs:boolean"/>
+        <xs:attribute name="rpc-port" use="optional" type="xs:long"/>
+
+        <xs:attribute name="internode-authenticator" use="optional" type="xs:string"/>
+
+        <xs:attribute name="data-file-directories" use="required" type="xs:string"/>
+        <xs:attribute name="saved-caches-directory" use="required" type="xs:string"/>
+        <xs:attribute name="commitlog-directory" use="required" type="xs:string"/>
+
+        <xs:attribute name="commitlog-sync" use="optional" type="xs:string"/>
+        <xs:attribute name="commitlog-sync-period-in-ms" use="optional" type="xs:string"/>
+
+        <xs:attribute name="endpoint-snitch" use="optional" type="xs:string"/>
+        <xs:attribute name="request-scheduler" use="optional" type="xs:string"/>
+
+        <xs:attribute name="server-encryption-enabled" use="optional" type="xs:string"/>
+        <xs:attribute name="client-encryption-enabled" use="optional" type="xs:boolean"/>
+
+
     </xs:complexType>
 
 </xs:schema>
