@@ -1,11 +1,8 @@
-package org.wildfly.cassandra.service;
+package org.wildfly.cassandra.extension;
 
 import org.apache.cassandra.config.Config;
 import org.apache.cassandra.config.ConfigurationLoader;
-import org.apache.cassandra.config.YamlConfigurationLoader;
 import org.apache.cassandra.exceptions.ConfigurationException;
-
-import java.io.File;
 
 /**
  * A delegate mechanism to load the cassandra configuration from the wildfly management model.
@@ -13,14 +10,19 @@ import java.io.File;
  * @author Heiko Braun
  * @since 16/08/14
  */
-public class WildflyConfigLoader implements ConfigurationLoader {
+public class DMRConfigLoader implements ConfigurationLoader {
+
+    static Config CASSANDRA_CONFIG = null;
 
     @Override
     public Config loadConfig() throws ConfigurationException {
+        if(null==CASSANDRA_CONFIG)
+            throw new IllegalStateException("Cassandra config not initialized");
 
-        // TODO: Delegate to subsystem configuration once it's implemented
-        // for now relay on an external yaml configuration file
+        return CASSANDRA_CONFIG;
+    }
 
+    /*private Config loadFromConfigFile() throws ConfigurationException {
         File configFile = new File(System.getProperty("jboss.modules.dir")
                             + "/system/layers/base/org/wildfly/cassandra/main/conf/cassandra.yaml");
 
@@ -28,5 +30,5 @@ public class WildflyConfigLoader implements ConfigurationLoader {
         System.setProperty("cassandra-foreground", "true");
         YamlConfigurationLoader delegate = new YamlConfigurationLoader();
         return delegate.loadConfig();
-    }
+    }*/
 }

@@ -8,6 +8,5 @@
              data-file-directories="/var/lib/cassandra/data"
              saved-caches-directory="/var/lib/cassandra/saved_caches"
              start-rpc="true"
-             start-native-transport="true"
-            />
+             start-native-transport="true"/>
 </subsystem>

@@ -9,6 +9,7 @@ import org.jboss.msc.service.ServiceName;
 import org.jboss.msc.service.StartContext;
 import org.jboss.msc.service.StartException;
 import org.jboss.msc.service.StopContext;
+import org.wildfly.cassandra.extension.DMRConfigLoader;
 import org.wildfly.cassandra.logging.CassandraLogger;
 
 import java.io.File;
@@ -37,23 +38,15 @@ public class CassandraService implements Service<CassandraService> {
     public void start(StartContext context) throws StartException {
 
         try {
-            File configFile = new File(System.getProperty("jboss.modules.dir")
-                    + "/system/layers/base/org/wildfly/cassandra/main/conf/cassandra.yaml");
+            CassandraLogger.LOGGER.infof("Starting embedded cassandra service '%s'");
 
-            if(configFile.exists()) {
-                CassandraLogger.LOGGER.infof("Starting embedded cassandra service '%s'");
+            System.setProperty("cassandra.config.loader", DMRConfigLoader.class.getName());
 
-                System.setProperty("cassandra.config.loader", WildflyConfigLoader.class.getName());
+            //cleanupAndLeaveDirs();
 
-                cleanupAndLeaveDirs();
+            cassandraDaemon = new CassandraDaemon();
+            cassandraDaemon.activate();
 
-                cassandraDaemon = new CassandraDaemon();
-                cassandraDaemon.activate();
-            }
-            else
-            {
-                context.failed(new StartException("Failed to start cassandra service. Configuration file is missing:"+configFile.getAbsolutePath()));
-            }
         } catch (Throwable e) {
             context.failed(new StartException(e));
         }
@@ -68,7 +61,7 @@ public class CassandraService implements Service<CassandraService> {
         }
     }
 
-    private static void cleanupAndLeaveDirs() throws IOException {
+    /*private static void cleanupAndLeaveDirs() throws IOException {
         mkdirs();
         cleanup();
         mkdirs();
@@ -98,7 +91,7 @@ public class CassandraService implements Service<CassandraService> {
 
     public static void mkdirs() {
         DatabaseDescriptor.createAllDirectories();
-    }
+    }*/
 
 
 }
