@@ -1,7 +1,6 @@
 package org.wildfly.cassandra.extension;
 
 import org.jboss.as.controller.AttributeDefinition;
-import org.jboss.as.controller.DefaultAttributeMarshaller;
 import org.jboss.as.controller.PersistentResourceDefinition;
 import org.jboss.as.controller.ServiceRemoveStepHandler;
 import org.jboss.as.controller.SimpleAttributeDefinition;
@@ -13,8 +12,6 @@ import org.jboss.as.controller.registry.ManagementResourceRegistration;
 import org.jboss.dmr.ModelNode;
 import org.jboss.dmr.ModelType;
 
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -28,11 +25,11 @@ public class ClusterDefinition extends PersistentResourceDefinition {
 
     private final List<AccessConstraintDefinition> accessConstraints;
 
-    private ClusterDefinition(AttributeDefinition[] attributes) {
+    private ClusterDefinition() {
         super(CassandraExtension.CLUSTER_PATH,
                 CassandraExtension.getResourceDescriptionResolver(CassandraSubsystemModel.CLUSTER),
-                new ClusterAdd(attributes),
-                new ServiceRemoveStepHandler(ClusterAdd.SERVICE_NAME, new ClusterAdd(attributes)));
+                ClusterAdd.INSTANCE,
+                new ServiceRemoveStepHandler(ClusterAdd.SERVICE_NAME, ClusterAdd.INSTANCE));
 
         ApplicationTypeConfig atc = new ApplicationTypeConfig(CassandraExtension.SUBSYSTEM_NAME, CassandraSubsystemModel.CLUSTER);
         accessConstraints = new ApplicationTypeAccessConstraintDefinition(atc).wrapAsList();
@@ -84,14 +81,14 @@ public class ClusterDefinition extends PersistentResourceDefinition {
                         .build();
 
     // -----------
-    private static final AttributeDefinition[] ATTRIBUTES = {
+    static final AttributeDefinition[] ATTRIBUTES = {
             DEBUG, NUM_ATTRIBUTES,
             HINTED_HANDOFF_ENABLED, MAX_HINT_WINDOW, HINT_DELIVERY_THREADS, HINTED_THROTTLE
     };
 
     private static final List CHILDREN = Collections.EMPTY_LIST;
 
-    static final ClusterDefinition INSTANCE = new ClusterDefinition(ATTRIBUTES);
+    static final ClusterDefinition INSTANCE = new ClusterDefinition();
 
     @Override
     public void registerAttributes(final ManagementResourceRegistration rootResourceRegistration) {

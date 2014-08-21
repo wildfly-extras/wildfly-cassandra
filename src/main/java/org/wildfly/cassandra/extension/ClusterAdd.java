@@ -10,7 +10,6 @@ import org.jboss.as.controller.AttributeDefinition;
 import org.jboss.as.controller.OperationContext;
 import org.jboss.as.controller.OperationFailedException;
 import org.jboss.as.controller.PathAddress;
-import org.jboss.as.controller.RestartParentResourceAddHandler;
 import org.jboss.as.controller.ServiceVerificationHandler;
 import org.jboss.as.controller.registry.Resource;
 import org.jboss.dmr.ModelNode;
@@ -18,7 +17,6 @@ import org.jboss.msc.service.ServiceController;
 import org.jboss.msc.service.ServiceName;
 import org.wildfly.cassandra.service.CassandraService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.OP_ADDR;
@@ -30,19 +28,15 @@ import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.OP_
  */
 class ClusterAdd extends AbstractAddStepHandler {
 
+    public final static ClusterAdd INSTANCE = new ClusterAdd();
     public static final ServiceName SERVICE_NAME = ServiceName.JBOSS.append("cassandra");
-    private final AttributeDefinition[] attributes;
-
-    ClusterAdd(AttributeDefinition[] attributes) {
-        this.attributes = attributes;
-    }
 
     /**
      * {@inheritDoc}
      */
     @Override
     protected void populateModel(ModelNode operation, ModelNode model) throws OperationFailedException {
-        for (AttributeDefinition def : attributes) {
+        for (AttributeDefinition def : ClusterDefinition.ATTRIBUTES) {
             def.validateAndSet(operation, model);
         }
     }
