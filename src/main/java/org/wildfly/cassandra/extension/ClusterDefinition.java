@@ -27,46 +27,46 @@ public class ClusterDefinition extends PersistentResourceDefinition {
 
     private ClusterDefinition() {
         super(CassandraExtension.CLUSTER_PATH,
-                CassandraExtension.getResourceDescriptionResolver(CassandraSubsystemModel.CLUSTER),
+                CassandraExtension.getResourceDescriptionResolver(CassandraModel.CLUSTER),
                 ClusterAdd.INSTANCE,
                 new ServiceRemoveStepHandler(ClusterAdd.SERVICE_NAME, ClusterAdd.INSTANCE));
 
-        ApplicationTypeConfig atc = new ApplicationTypeConfig(CassandraExtension.SUBSYSTEM_NAME, CassandraSubsystemModel.CLUSTER);
+        ApplicationTypeConfig atc = new ApplicationTypeConfig(CassandraExtension.SUBSYSTEM_NAME, CassandraModel.CLUSTER);
         accessConstraints = new ApplicationTypeAccessConstraintDefinition(atc).wrapAsList();
     }
 
     // -----------
 
     protected static final SimpleAttributeDefinition DEBUG =
-            new SimpleAttributeDefinitionBuilder(CassandraSubsystemModel.DEBUG, ModelType.BOOLEAN, true)
+            new SimpleAttributeDefinitionBuilder(CassandraModel.DEBUG, ModelType.BOOLEAN, true)
                     .setAllowExpression(true)
                     .setDefaultValue(new ModelNode(false))
                     .setRestartAllServices()
                     .build();
 
     protected static final SimpleAttributeDefinition NUM_ATTRIBUTES =
-            new SimpleAttributeDefinitionBuilder(CassandraSubsystemModel.NUM_ATTRIBUTES, ModelType.INT, true)
+            new SimpleAttributeDefinitionBuilder(CassandraModel.NUM_ATTRIBUTES, ModelType.INT, true)
                     .setAllowExpression(true)
                     .setDefaultValue(new ModelNode(256))
                     .setRestartAllServices()
                     .build();
 
     protected static final SimpleAttributeDefinition HINTED_HANDOFF_ENABLED =
-            new SimpleAttributeDefinitionBuilder(CassandraSubsystemModel.HINTED_HANDOFF_ENABLED, ModelType.BOOLEAN, true)
+            new SimpleAttributeDefinitionBuilder(CassandraModel.HINTED_HANDOFF_ENABLED, ModelType.BOOLEAN, true)
                     .setAllowExpression(true)
                     .setDefaultValue(new ModelNode(true))
                     .setRestartAllServices()
                     .build();
 
     protected static final SimpleAttributeDefinition MAX_HINT_WINDOW =
-            new SimpleAttributeDefinitionBuilder(CassandraSubsystemModel.MAX_HINT_WINDOW, ModelType.LONG, true)
+            new SimpleAttributeDefinitionBuilder(CassandraModel.MAX_HINT_WINDOW, ModelType.LONG, true)
                     .setAllowExpression(true)
                     .setDefaultValue(new ModelNode(10800000))
                     .setRestartAllServices()
                     .build();
 
     protected static final SimpleAttributeDefinition HINTED_THROTTLE =
-            new SimpleAttributeDefinitionBuilder(CassandraSubsystemModel.HINTED_THROTTLE, ModelType.LONG, true)
+            new SimpleAttributeDefinitionBuilder(CassandraModel.HINTED_THROTTLE, ModelType.LONG, true)
                     .setAllowExpression(true)
                     .setDefaultValue(new ModelNode(1024))
                     .setRestartAllServices()
@@ -74,7 +74,7 @@ public class ClusterDefinition extends PersistentResourceDefinition {
 
 
     protected static final SimpleAttributeDefinition HINT_DELIVERY_THREADS =
-                new SimpleAttributeDefinitionBuilder(CassandraSubsystemModel.HINT_DELIVERY_THREADS, ModelType.INT, true)
+                new SimpleAttributeDefinitionBuilder(CassandraModel.HINT_DELIVERY_THREADS, ModelType.INT, true)
                         .setAllowExpression(true)
                         .setDefaultValue(new ModelNode(2))
                         .setRestartAllServices()

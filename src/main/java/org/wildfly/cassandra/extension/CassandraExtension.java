@@ -8,7 +8,6 @@ import org.jboss.as.controller.descriptions.StandardResourceDescriptionResolver;
 import org.jboss.as.controller.operations.common.GenericSubsystemDescribeHandler;
 import org.jboss.as.controller.parsing.ExtensionParsingContext;
 import org.jboss.as.controller.registry.ManagementResourceRegistration;
-import org.jboss.dmr.ModelNode;
 
 import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.*;
 
@@ -30,7 +29,7 @@ public class CassandraExtension implements Extension {
 
 
     protected static final PathElement SUBSYSTEM_PATH = PathElement.pathElement(SUBSYSTEM, SUBSYSTEM_NAME);
-    protected static PathElement CLUSTER_PATH = PathElement.pathElement(CassandraSubsystemModel.CLUSTER);
+    protected static PathElement CLUSTER_PATH = PathElement.pathElement(CassandraModel.CLUSTER);
 
     private static final String RESOURCE_NAME = CassandraExtension.class.getPackage().getName() + ".LocalDescriptions";
 
@@ -44,16 +43,16 @@ public class CassandraExtension implements Extension {
 
     @Override
     public void initializeParsers(ExtensionParsingContext context) {
-        context.setSubsystemXmlMapping(SUBSYSTEM_NAME, NAMESPACE, CassandraSubsystemParser.INSTANCE);
+        context.setSubsystemXmlMapping(SUBSYSTEM_NAME, NAMESPACE, SubsystemParser.INSTANCE);
     }
 
 
     @Override
     public void initialize(ExtensionContext context) {
         final SubsystemRegistration subsystem = context.registerSubsystem(SUBSYSTEM_NAME, 1, 0);
-        final ManagementResourceRegistration registration = subsystem.registerSubsystemModel(CassandraSubsystemResource.INSTANCE);
+        final ManagementResourceRegistration registration = subsystem.registerSubsystemModel(RootDefinition.INSTANCE);
         registration.registerOperationHandler(GenericSubsystemDescribeHandler.DEFINITION, GenericSubsystemDescribeHandler.INSTANCE);
-        subsystem.registerXMLElementWriter(CassandraSubsystemParser.INSTANCE);
+        subsystem.registerXMLElementWriter(SubsystemParser.INSTANCE);
     }
 
 }

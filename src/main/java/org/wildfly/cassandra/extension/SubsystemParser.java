@@ -24,18 +24,18 @@ import static org.jboss.as.controller.PersistentResourceXMLDescription.builder;
 /**
  * The subsystem parser, which uses stax to read and write to and from xml
  */
-public class CassandraSubsystemParser implements XMLStreamConstants, XMLElementReader<List<ModelNode>>, XMLElementWriter<SubsystemMarshallingContext> {
+public class SubsystemParser implements XMLStreamConstants, XMLElementReader<List<ModelNode>>, XMLElementWriter<SubsystemMarshallingContext> {
 
-    public final static CassandraSubsystemParser INSTANCE = new CassandraSubsystemParser();
+    public final static SubsystemParser INSTANCE = new SubsystemParser();
 
     private static final PersistentResourceXMLDescription xmlDescription;
 
     static {
-        xmlDescription = builder(CassandraSubsystemResource.INSTANCE)
+        xmlDescription = builder(RootDefinition.INSTANCE)
                 .addChild(
                         builder(ClusterDefinition.INSTANCE)
                                 .addAttributes(ClusterDefinition.INSTANCE.getAttributes())
-                )               .setXmlElementName(CassandraSubsystemModel.CLUSTER)
+                )               .setXmlElementName(CassandraModel.CLUSTER)
                 .build();
     }
 
@@ -45,7 +45,7 @@ public class CassandraSubsystemParser implements XMLStreamConstants, XMLElementR
     @Override
     public void writeContent(XMLExtendedStreamWriter writer, SubsystemMarshallingContext context) throws XMLStreamException {
         ModelNode model = new ModelNode();
-        model.get(CassandraSubsystemResource.INSTANCE.getPathElement().getKeyValuePair()).set(context.getModelNode());//this is bit of workaround for SPRD to work properly
+        model.get(RootDefinition.INSTANCE.getPathElement().getKeyValuePair()).set(context.getModelNode());//this is bit of workaround for SPRD to work properly
         xmlDescription.persist(writer, model, Namespace.CURRENT.getUriString());
     }
 

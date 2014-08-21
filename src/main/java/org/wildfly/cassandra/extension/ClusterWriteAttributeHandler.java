@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ClusterWriteAttributeHandler extends RestartParentWriteAttributeHandler {
 
     ClusterWriteAttributeHandler(AttributeDefinition... attributeDefinitions) {
-        super(CassandraSubsystemModel.CLUSTER, attributeDefinitions);
+        super(CassandraModel.CLUSTER, attributeDefinitions);
     }
 
     @Override

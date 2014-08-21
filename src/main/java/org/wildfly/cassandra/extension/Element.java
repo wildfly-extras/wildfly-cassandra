@@ -10,7 +10,7 @@ import java.util.Map;
 enum Element {
     UNKNOWN(null),
 
-    NAME(CassandraSubsystemModel.NAME);
+    NAME(CassandraModel.NAME);
 
     private final String name;
 

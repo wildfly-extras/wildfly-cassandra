@@ -9,11 +9,11 @@ import org.jboss.msc.service.ServiceController;
 
 import java.util.List;
 
-class CassandraSubsystemAdd extends AbstractBoottimeAddStepHandler {
+class RootAdd extends AbstractBoottimeAddStepHandler {
 
-    static final CassandraSubsystemAdd INSTANCE = new CassandraSubsystemAdd();
+    static final RootAdd INSTANCE = new RootAdd();
 
-    private CassandraSubsystemAdd() {
+    private RootAdd() {
     }
 
     /**

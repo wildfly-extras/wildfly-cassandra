@@ -13,13 +13,13 @@ import java.util.List;
  * @author Heiko Braun
  * @since 20/08/14
  */
-public class CassandraSubsystemResource extends PersistentResourceDefinition {
-    public static final CassandraSubsystemResource INSTANCE = new CassandraSubsystemResource();
+public class RootDefinition extends PersistentResourceDefinition {
+    public static final RootDefinition INSTANCE = new RootDefinition();
 
-       private CassandraSubsystemResource() {
+       private RootDefinition() {
            super(CassandraExtension.SUBSYSTEM_PATH,
                    CassandraExtension.getResourceDescriptionResolver(),
-                   CassandraSubsystemAdd.INSTANCE,
+                   RootAdd.INSTANCE,
                    ReloadRequiredRemoveStepHandler.INSTANCE);
        }
 
