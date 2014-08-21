@@ -13,7 +13,7 @@ import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.*;
 
 
 /**
- * @author <a href="kabir.khan@jboss.com">Kabir Khan</a>
+ * @author Heiko Braun
  */
 public class CassandraExtension implements Extension {
 

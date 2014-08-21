@@ -6,6 +6,7 @@ import org.jboss.logging.MessageLogger;
 
 /**
  * Log messages for WildFly cassandra module
+ * @author Heiko Braun
  */
 @MessageLogger(projectCode = "<<none>>")
 public interface CassandraLogger extends BasicLogger {

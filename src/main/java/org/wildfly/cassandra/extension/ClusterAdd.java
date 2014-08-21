@@ -22,9 +22,9 @@ import java.util.List;
 import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.OP_ADDR;
 
 /**
- * Handler responsible for adding the subsystem resource to the model
+ * Handler responsible for adding the cluster resource to the model
  *
- * @author <a href="kabir.khan@jboss.com">Kabir Khan</a>
+ * @author Heiko Braun
  */
 class ClusterAdd extends AbstractAddStepHandler {
 

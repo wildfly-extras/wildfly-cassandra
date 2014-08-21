@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * The actual cassandra runtime service
  * @author Heiko Braun
  */
 public class CassandraService implements Service<CassandraService> {

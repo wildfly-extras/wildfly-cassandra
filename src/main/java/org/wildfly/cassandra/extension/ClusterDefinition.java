@@ -18,6 +18,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * The cluster resource definition. Carries the main cassanda configuration attributes.
+ *
  * @author Heiko Braun
  * @since 20/08/14
  */

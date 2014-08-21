@@ -8,6 +8,8 @@ import org.apache.cassandra.exceptions.ConfigurationException;
 import java.io.File;
 
 /**
+ * A delegate mechanism to load the cassandra configuration from the wildfly management model.
+ *
  * @author Heiko Braun
  * @since 16/08/14
  */

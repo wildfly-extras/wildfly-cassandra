@@ -1,10 +1,5 @@
 package org.wildfly.cassandra.extension;
 
-/**
- * @author Heiko Braun
- * @since 20/08/14
- */
-
 import org.jboss.as.controller.PathAddress;
 import org.jboss.as.controller.PersistentResourceXMLDescription;
 import org.jboss.as.controller.persistence.SubsystemMarshallingContext;
@@ -23,6 +18,7 @@ import static org.jboss.as.controller.PersistentResourceXMLDescription.builder;
 
 /**
  * The subsystem parser, which uses stax to read and write to and from xml
+ *  @author Heiko Braun
  */
 public class SubsystemParser implements XMLStreamConstants, XMLElementReader<List<ModelNode>>, XMLElementWriter<SubsystemMarshallingContext> {
 

@@ -9,6 +9,12 @@ import org.jboss.msc.service.ServiceController;
 
 import java.util.List;
 
+/**
+ * Adds the subsystem root resource to the model.
+ *
+ * @author Heiko Braun
+ * @since 20/08/14
+ */
 class RootAdd extends AbstractBoottimeAddStepHandler {
 
     static final RootAdd INSTANCE = new RootAdd();

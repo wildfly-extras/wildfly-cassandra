@@ -29,6 +29,10 @@ package org.wildfly.cassandra.extension;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Heiko Braun
+ * @since 20/08/14
+ */
 enum Namespace {
     // must be first
     UNKNOWN(null),
