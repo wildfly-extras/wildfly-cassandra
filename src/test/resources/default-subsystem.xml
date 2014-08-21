@@ -1,3 +1,3 @@
 <subsystem xmlns="urn:wildfly:cassandra:1.0">
-    <cluster name="My Cluster" num-attributes="256" hinted-handoff-enabled="true"/>
+    <cluster name="My Cluster" num-attributes="128" hinted-handoff-enabled="false"/>
 </subsystem>
