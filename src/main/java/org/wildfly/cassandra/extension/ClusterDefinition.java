@@ -87,6 +87,7 @@ public class ClusterDefinition extends PersistentResourceDefinition {
                     .setRestartAllServices()
                     .build();
 
+    // TODO: this should become a list of seeds
     protected static final SimpleAttributeDefinition SEEDS =
             new SimpleAttributeDefinitionBuilder(CassandraModel.SEEDS, ModelType.STRING, false)
                     .setAllowExpression(true)
