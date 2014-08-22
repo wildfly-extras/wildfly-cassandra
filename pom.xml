@@ -38,7 +38,7 @@
         <version.junit>4.11</version.junit>
         <version.org.jboss.logging.jboss-logging>3.1.4.GA</version.org.jboss.logging.jboss-logging>
         <version.org.jboss.logging.jboss-logging-tools>1.2.0.Final</version.org.jboss.logging.jboss-logging-tools>
-        <version.cassandra.all>2.0.6-jboss2</version.cassandra.all>
+        <version.cassandra.all>2.0.6-jboss3</version.cassandra.all>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>org.wildfly.cassandra</module.name>
     </properties>
@@ -51,12 +51,11 @@
 
     <licenses>
         <license>
-            <name>LGPL 2.1</name>
-            <url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
+            <name>Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
-
 
     <build>
         <!-- Maven will append the version to the finalName (which is the name

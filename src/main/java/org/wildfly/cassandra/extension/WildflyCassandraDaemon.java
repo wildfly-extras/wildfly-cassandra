@@ -296,7 +296,7 @@ public class WildflyCassandraDaemon implements Daemon
         SystemKeyspace.finishStartup();
 
         // start server internals
-        StorageService.instance.registerHandles(this, nativeServer, thriftServer);
+        StorageService.instance.registerDaemon(this);
         try
         {
             StorageService.instance.initServer();
@@ -331,11 +331,13 @@ public class WildflyCassandraDaemon implements Daemon
         InetAddress rpcAddr = DatabaseDescriptor.getRpcAddress();
         int rpcPort = DatabaseDescriptor.getRpcPort();
         thriftServer = new ThriftServer(rpcAddr, rpcPort);
+        StorageService.instance.registerThriftServer(thriftServer);
 
         // Native transport
         InetAddress nativeAddr = DatabaseDescriptor.getNativeTransportAddress();
         int nativePort = DatabaseDescriptor.getNativeTransportPort();
         nativeServer = new org.apache.cassandra.transport.Server(nativeAddr, nativePort);
+        StorageService.instance.registerNativeServer(nativeServer);
     }
 
     /**
