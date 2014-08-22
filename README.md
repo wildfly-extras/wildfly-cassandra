@@ -32,7 +32,33 @@ that can be used to start a stripped wildfly instance:
 
 The cassandra service can be configured like any other wildfly resource:
 
-`/subsystem=cassandra/cluster=<CLUSTER_NAME>`
+`[standalone@localhost:9990 /] /subsystem=cassandra/cluster=WildflyCluster:read-resource
+ {
+     "outcome" => "success",
+     "result" => {
+         "authenticator" => "AllowAllAuthenticator",
+         "authorizer" => "AllowAllAuthorizer",
+         "broadcast-address" => expression "${jboss.default.multicast.address:230.0.0.4}",
+         "client-encryption-enabled" => false,
+         "commitlog-sync" => "periodic",
+         "commitlog-sync-period-in-ms" => 10000,
+         "debug" => false,
+         "endpoint-snitch" => "SimpleSnitch",
+         "hinted-handoff-enabled" => true,
+         "internode-authenticator" => "org.apache.cassandra.auth.AllowAllInternodeAuthenticator",
+         "listen-address" => expression "${jboss.bind.address:127.0.0.1}",
+         "native-transport-port" => 9042,
+         "num-tokens" => 256,
+         "partitioner" => "org.apache.cassandra.dht.Murmur3Partitioner",
+         "request-scheduler" => "org.apache.cassandra.scheduler.NoScheduler",
+         "rpc-port" => 9160,
+         "seed-provider-class-name" => "org.apache.cassandra.locator.SimpleSeedProvider",
+         "seed-provider-seeds" => expression "${jboss.bind.address:127.0.0.1}",
+         "server-encryption-enabled" => false,
+         "start-native-transport" => true,
+         "start-rpc" => true
+     }
+ }`
 
 ##Cassandra Documentation
 
