@@ -32,6 +32,7 @@ that can be used to start a stripped wildfly instance:
 
 The cassandra service can be configured like any other wildfly resource:
 
+<pre>
 `[standalone@localhost:9990 /] /subsystem=cassandra/cluster=WildflyCluster:read-resource
  {
      "outcome" => "success",
@@ -59,6 +60,7 @@ The cassandra service can be configured like any other wildfly resource:
          "start-rpc" => true
      }
  }`
+</pre>
 
 ##Cassandra Documentation
 
