@@ -20,7 +20,7 @@ Why not use a stock Cassandra version?
 
 The reason is simple: Cassandra isn't designed to be used an embedded library.
 In particular the CassandraDaemon and some of the core services make heavy use 'System.exit()' calls.
-But in order to embed Cassandra as a managed service (the Wildfly Service Container manages it), we had to remove some of the code
+But in order to embed Cassandra as a managed service, we had to remove some of the code
  that would otherwise break the service contracts in Wildlfy.
 
 
