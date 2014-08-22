@@ -21,28 +21,18 @@ This will add an additional module that contains the cassandra extension and sub
 
 `modules/system/layers/base/org/wildfly/cassandra/main/`
 
-## Configure Wildfly
+## Wildfly Configuration Profile
 
-In order for the subsystem to be recognized by wildfly, you need to to add the following XML
-to the wildfly server configuration file:
+When installing the cassandra-module.zip it create a custom server profile ($WILDFLY_HOME/standalone/configuration/cassandra.xml)
+that can be used to start a stripped wildfly instance:
 
-`
-<extensions>
-     <extension module="org.wildfly.cassandra"/>
-</extensions>
- `
-
-`
-<subsystem xmlns="urn:wildfly:cassandra:1.0">
-</subsystem>
-`
+`./bin/standalone.sh -c cassandra.xml`
 
 ## Cassandra Configuration
 
-The C* configuration has not ported to wildfly yet. The current subsystem configuration still delegates to an external
-cassandra.yaml file, that resides with the module:
+The cassandra service can be configured like any other wildfly resource:
 
-`modules/system/layers/base/org/wildfly/cassandra/main/conf/cassandra.yaml`
+`/subsystem=cassandra/cluster=<CLUSTER_NAME>`
 
 ##Cassandra Documentation
 
