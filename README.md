@@ -38,13 +38,19 @@ This will add an additional module that contains the cassandra extension and sub
 
 `modules/system/layers/base/org/wildfly/cassandra/main/`
 
-## Wildfly Configuration Profile
+## Server Configuration Profiles
 
-When installing the cassandra-module.zip it create a custom server profile
+When installing the cassandra-module.zip it create a custom server profile for both satandalone and domain mode
 ($WILDFLY_HOME/standalone/configuration/standalone-cassandra.xml & $WILDFLY_HOME/domain/configuration/cassandra-domain.xml)
-that can be used to start a stripped wildfly instance:
+that can be used to start a pre-configured Wildfly instance:
 
-`./bin/standalone.sh -c standalone-cassandra.xml`
+### Standalone Mode
+
+`./bin/standalone.sh -c standalone-cassandra.xml -b 127.0.0.1`
+
+### Domain Mode
+
+`./bin/domain.sh --domain-config=cassandra-domain.xml --host-config=cassandra-host.xml -b 127.0.0.1`
 
 ## Cassandra Configuration
 
