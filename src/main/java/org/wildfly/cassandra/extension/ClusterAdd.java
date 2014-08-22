@@ -6,9 +6,7 @@ package org.wildfly.cassandra.extension;
  */
 
 import org.apache.cassandra.config.Config;
-import org.apache.cassandra.config.EncryptionOptions;
 import org.apache.cassandra.config.SeedProviderDef;
-import org.apache.cassandra.db.commitlog.CommitLog;
 import org.jboss.as.controller.AbstractAddStepHandler;
 import org.jboss.as.controller.AttributeDefinition;
 import org.jboss.as.controller.OperationContext;
@@ -16,13 +14,13 @@ import org.jboss.as.controller.OperationFailedException;
 import org.jboss.as.controller.PathAddress;
 import org.jboss.as.controller.ServiceVerificationHandler;
 import org.jboss.as.controller.registry.Resource;
+import org.jboss.as.controller.services.path.PathManager;
+import org.jboss.as.controller.services.path.PathManagerService;
 import org.jboss.dmr.ModelNode;
 import org.jboss.msc.service.ServiceController;
 import org.jboss.msc.service.ServiceName;
-import org.wildfly.cassandra.service.CassandraService;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -62,13 +60,17 @@ class ClusterAdd extends AbstractAddStepHandler {
     static void installRuntimeServices(OperationContext context, PathAddress address, ModelNode fullModel, ServiceVerificationHandler verificationHandler, List<ServiceController<?>> controllers) throws OperationFailedException {
         String suffix = address.getLastElement().getValue();
 
-        DMRConfigLoader.CASSANDRA_CONFIG = createServiceConfig(context, address, fullModel);
+        final Config serviceConfig = createServiceConfig(context, address, fullModel);
 
-        CassandraService service = new CassandraService(suffix);
+        // Create path services
+        //String bindingsPath = PATHS.get(BINDINGS_DIRECTORY).resolveModelAttribute(context, model.get(PATH, BINDINGS_DIRECTORY)).asString();
+
+        CassandraService service = new CassandraService(suffix, serviceConfig);
         ServiceController<CassandraService> controller = context.getServiceTarget()
                 .addService(SERVICE_NAME, service)
                 .addListener(verificationHandler)
                 .setInitialMode(ServiceController.Mode.ACTIVE)
+                .addDependency(PathManagerService.SERVICE_NAME, PathManager.class, service.getPathManagerInjector())
                 .install();
         controllers.add(controller);
 
@@ -111,10 +113,11 @@ class ClusterAdd extends AbstractAddStepHandler {
 
         cassandraConfig.internode_authenticator= ClusterDefinition.INTERNODE_AUTHENTICATOR.resolveModelAttribute(context, fullModel).asString();
 
-        // TODO: support multiple directories
-        cassandraConfig.data_file_directories= new String[]{ClusterDefinition.DATA_FILE_DIR.resolveModelAttribute(context, fullModel).asString()};
+        // NOTE: The directories are resolved as part of the service boostrap due to a service dependency on PathManager
+
+        /*cassandraConfig.data_file_directories= new String[]{ClusterDefinition.DATA_FILE_DIR.resolveModelAttribute(context, fullModel).asString()};
         cassandraConfig.saved_caches_directory= ClusterDefinition.SAVED_CACHES_DIR.resolveModelAttribute(context, fullModel).asString();
-        cassandraConfig.commitlog_directory= ClusterDefinition.COMMIT_LOG_DIR.resolveModelAttribute(context, fullModel).asString();
+        cassandraConfig.commitlog_directory= ClusterDefinition.COMMIT_LOG_DIR.resolveModelAttribute(context, fullModel).asString();*/
 
         cassandraConfig.commitlog_sync= Config.CommitLogSync.valueOf(ClusterDefinition.COMMIT_LOG_SYNC.resolveModelAttribute(context, fullModel).asString());
         cassandraConfig.commitlog_sync_period_in_ms = ClusterDefinition.COMMIT_LOG_SYNC_PERIOD.resolveModelAttribute(context, fullModel).asInt();
@@ -128,4 +131,5 @@ class ClusterAdd extends AbstractAddStepHandler {
         return cassandraConfig;
 
     }
+
 }

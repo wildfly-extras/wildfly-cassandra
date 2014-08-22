@@ -140,7 +140,7 @@ public class ClusterDefinition extends PersistentResourceDefinition {
                     .setRestartAllServices()
                     .build();
 
-    static final SimpleAttributeDefinition DATA_FILE_DIR =
+   /* static final SimpleAttributeDefinition DATA_FILE_DIR =
             new SimpleAttributeDefinitionBuilder(CassandraModel.DATA_FILE_DIR, ModelType.STRING, false)
                     .setAllowExpression(true)
                     .setRestartAllServices()
@@ -157,7 +157,7 @@ public class ClusterDefinition extends PersistentResourceDefinition {
                     .setAllowExpression(true)
                     .setRestartAllServices()
                     .build();
-
+*/
     static final SimpleAttributeDefinition COMMIT_LOG_SYNC =
             new SimpleAttributeDefinitionBuilder(CassandraModel.COMMIT_LOG_SYNC, ModelType.STRING, true)
                     .setAllowExpression(true)
@@ -214,8 +214,7 @@ public class ClusterDefinition extends PersistentResourceDefinition {
             START_NATIVE_TRANSPORT, NATIVE_TRANSPORT_PORT,
             START_RPC, RPC_PORT,
             INTERNODE_AUTHENTICATOR,
-            DATA_FILE_DIR, SAVED_CACHES_DIR,
-            COMMIT_LOG_DIR, COMMIT_LOG_SYNC, COMMIT_LOG_SYNC_PERIOD,
+            COMMIT_LOG_SYNC, COMMIT_LOG_SYNC_PERIOD,
             ENDPOINT_SNITCH,
             REQUEST_SCHEDULER,
             CLIENT_ENCRYPTION, SERVER_ENCRYPTION

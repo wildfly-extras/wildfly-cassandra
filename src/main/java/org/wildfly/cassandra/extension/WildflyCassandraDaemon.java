@@ -1,4 +1,4 @@
-package org.wildfly.cassandra.service;
+package org.wildfly.cassandra.extension;
 
 import com.addthis.metrics.reporter.config.ReporterConfig;
 import com.google.common.collect.Iterables;

@@ -13,6 +13,11 @@
         <extension module="org.wildfly.cassandra"/>
     </extensions>
 
+   <!-- <paths>
+        <path name="cassandra.dataFileDir" path="cassandra/data" relative-to="jboss.server.data.dir"/>
+        <path name="cassandra.savedCachesDir" path="cassandra/saved_caches" relative-to="jboss.server.data.dir"/>
+        <path name="cassandra.commitLogDir" path="cassandra/commitlog" relative-to="jboss.server.data.dir"/>
+    </paths>-->
 
     <management>
         <security-realms>
@@ -119,9 +124,6 @@
                      seed-provider-seeds="${jboss.bind.address:127.0.0.1}"
                      listen-address="${jboss.bind.address:127.0.0.1}"
                      broadcast-address="${jboss.default.multicast.address:230.0.0.4}"
-                     commitlog-directory="/var/lib/cassandra/commitlog"
-                     data-file-directories="/var/lib/cassandra/data"
-                     saved-caches-directory="/var/lib/cassandra/saved_caches"
                      start-rpc="true"
                      start-native-transport="true"/>
         </subsystem>
