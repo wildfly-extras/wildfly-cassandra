@@ -65,42 +65,42 @@ public class ClusterDefinition extends PersistentResourceDefinition {
 
     static final SimpleAttributeDefinition NUM_TOKENS =
             new SimpleAttributeDefinitionBuilder(CassandraModel.NUM_TOKENS, ModelType.INT, true)
-                    .setAllowExpression(true)
+                    .setAllowExpression(false)
                     .setDefaultValue(new ModelNode(256))
                     .setRestartAllServices()
                     .build();
 
     static final SimpleAttributeDefinition HINTED_HANDOFF_ENABLED =
             new SimpleAttributeDefinitionBuilder(CassandraModel.HINTED_HANDOFF_ENABLED, ModelType.BOOLEAN, true)
-                    .setAllowExpression(true)
+                    .setAllowExpression(false)
                     .setDefaultValue(new ModelNode(true))
                     .setRestartAllServices()
                     .build();
 
     static final SimpleAttributeDefinition AUTHENTICATOR =
             new SimpleAttributeDefinitionBuilder(CassandraModel.AUTHENTICATOR, ModelType.STRING, true)
-                    .setAllowExpression(true)
+                    .setAllowExpression(false)
                     .setDefaultValue(new ModelNode("AllowAllAuthenticator"))
                     .setRestartAllServices()
                     .build();
 
     static final SimpleAttributeDefinition AUTHORIZER =
             new SimpleAttributeDefinitionBuilder(CassandraModel.AUTHORIZER, ModelType.STRING, true)
-                    .setAllowExpression(true)
+                    .setAllowExpression(false)
                     .setDefaultValue(new ModelNode("AllowAllAuthorizer"))
                     .setRestartAllServices()
                     .build();
 
     static final SimpleAttributeDefinition PARTIONER =
             new SimpleAttributeDefinitionBuilder(CassandraModel.PARTITIONER, ModelType.STRING, true)
-                    .setAllowExpression(true)
+                    .setAllowExpression(false)
                     .setDefaultValue(new ModelNode("org.apache.cassandra.dht.Murmur3Partitioner"))
                     .setRestartAllServices()
                     .build();
 
     static final SimpleAttributeDefinition SEED_PROVIDER =
             new SimpleAttributeDefinitionBuilder(CassandraModel.SEED_PROVIDER, ModelType.STRING, false)
-                    .setAllowExpression(true)
+                    .setAllowExpression(false)
                     .setRestartAllServices()
                     .build();
 
@@ -132,13 +132,13 @@ public class ClusterDefinition extends PersistentResourceDefinition {
 
     static final SimpleAttributeDefinition START_RPC =
             new SimpleAttributeDefinitionBuilder(CassandraModel.START_RPC, ModelType.BOOLEAN, false)
-                    .setAllowExpression(true)
+                    .setAllowExpression(false)
                     .setRestartAllServices()
                     .build();
 
     static final SimpleAttributeDefinition NATIVE_TRANSPORT_PORT =
             new SimpleAttributeDefinitionBuilder(CassandraModel.NATIVE_TRANSPORT_PORT, ModelType.INT, true)
-                    .setAllowExpression(true)
+                    .setAllowExpression(false)
                     .setDefaultValue(new ModelNode(9042))
                     .setRestartAllServices()
                     .build();
@@ -152,7 +152,7 @@ public class ClusterDefinition extends PersistentResourceDefinition {
 
     static final SimpleAttributeDefinition INTERNODE_AUTHENTICATOR =
             new SimpleAttributeDefinitionBuilder(CassandraModel.INTERNODE_AUTHENTICATOR, ModelType.STRING, true)
-                    .setAllowExpression(true)
+                    .setAllowExpression(false)
                     .setDefaultValue(new ModelNode("org.apache.cassandra.auth.AllowAllInternodeAuthenticator"))
                     .setRestartAllServices()
                     .build();
@@ -177,14 +177,14 @@ public class ClusterDefinition extends PersistentResourceDefinition {
 */
     static final SimpleAttributeDefinition COMMIT_LOG_SYNC =
             new SimpleAttributeDefinitionBuilder(CassandraModel.COMMIT_LOG_SYNC, ModelType.STRING, true)
-                    .setAllowExpression(true)
+                    .setAllowExpression(false)
                     .setDefaultValue(new ModelNode("periodic"))
                     .setRestartAllServices()
                     .build();
 
     static final SimpleAttributeDefinition COMMIT_LOG_SYNC_PERIOD =
             new SimpleAttributeDefinitionBuilder(CassandraModel.COMMIT_LOG_SYNC_PERIOD, ModelType.INT, true)
-                    .setAllowExpression(true)
+                    .setAllowExpression(false)
                     .setDefaultValue(new ModelNode(10000))
                     .setRestartAllServices()
                     .build();
@@ -192,14 +192,14 @@ public class ClusterDefinition extends PersistentResourceDefinition {
 
     static final SimpleAttributeDefinition ENDPOINT_SNITCH =
             new SimpleAttributeDefinitionBuilder(CassandraModel.ENDPOINT_SNITCH, ModelType.STRING, true)
-                    .setAllowExpression(true)
+                    .setAllowExpression(false)
                     .setDefaultValue(new ModelNode("SimpleSnitch"))
                     .setRestartAllServices()
                     .build();
 
     static final SimpleAttributeDefinition REQUEST_SCHEDULER =
             new SimpleAttributeDefinitionBuilder(CassandraModel.REQUEST_SCHEDULER, ModelType.STRING, true)
-                    .setAllowExpression(true)
+                    .setAllowExpression(false)
                     .setDefaultValue(new ModelNode("org.apache.cassandra.scheduler.NoScheduler"))
                     .setRestartAllServices()
                     .build();
@@ -207,14 +207,14 @@ public class ClusterDefinition extends PersistentResourceDefinition {
 
     static final SimpleAttributeDefinition SERVER_ENCRYPTION =
             new SimpleAttributeDefinitionBuilder(CassandraModel.SERVER_ENCRYPTION, ModelType.BOOLEAN, true)
-                    .setAllowExpression(true)
+                    .setAllowExpression(false)
                     .setDefaultValue(new ModelNode(false))
                     .setRestartAllServices()
                     .build();
 
     static final SimpleAttributeDefinition CLIENT_ENCRYPTION =
             new SimpleAttributeDefinitionBuilder(CassandraModel.CLIENT_ENCRYPTION, ModelType.BOOLEAN, true)
-                    .setAllowExpression(true)
+                    .setAllowExpression(false)
                     .setDefaultValue(new ModelNode(false))
                     .setRestartAllServices()
                     .build();

@@ -30,12 +30,6 @@
         <extension module="org.wildfly.cassandra"/>
     </extensions>
 
-   <!-- <paths>
-        <path name="cassandra.dataFileDir" path="cassandra/data" relative-to="jboss.server.data.dir"/>
-        <path name="cassandra.savedCachesDir" path="cassandra/saved_caches" relative-to="jboss.server.data.dir"/>
-        <path name="cassandra.commitLogDir" path="cassandra/commitlog" relative-to="jboss.server.data.dir"/>
-    </paths>-->
-
     <management>
         <security-realms>
             <security-realm name="ManagementRealm">

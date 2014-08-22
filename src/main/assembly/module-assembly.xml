@@ -25,7 +25,7 @@
     <includeBaseDirectory>false</includeBaseDirectory>
     <fileSets>
         <fileSet>
-            <directory>${project.basedir}/src/main/resources/cfg</directory>
+            <directory>${project.basedir}/src/main/resources/config</directory>
             <outputDirectory>standalone/configuration/</outputDirectory>
             <includes>
                 <include>cassandra.xml</include>
