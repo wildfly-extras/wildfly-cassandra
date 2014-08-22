@@ -1,19 +1,11 @@
 package org.wildfly.cassandra.service;
 
-import org.apache.cassandra.config.DatabaseDescriptor;
-import org.apache.cassandra.db.commitlog.CommitLog;
-import org.apache.cassandra.io.util.FileUtils;
-import org.apache.cassandra.service.CassandraDaemon;
 import org.jboss.msc.service.Service;
-import org.jboss.msc.service.ServiceName;
 import org.jboss.msc.service.StartContext;
 import org.jboss.msc.service.StartException;
 import org.jboss.msc.service.StopContext;
 import org.wildfly.cassandra.extension.DMRConfigLoader;
 import org.wildfly.cassandra.logging.CassandraLogger;
-
-import java.io.File;
-import java.io.IOException;
 
 /**
  * The actual cassandra runtime service
@@ -23,7 +15,7 @@ public class CassandraService implements Service<CassandraService> {
 
 
     private final String suffix;
-    private CassandraDaemon cassandraDaemon;
+    private WildflyCassandraDaemon cassandraDaemon;
 
     public CassandraService(String suffix) {
         this.suffix = suffix;
@@ -44,7 +36,7 @@ public class CassandraService implements Service<CassandraService> {
 
             //cleanupAndLeaveDirs();
 
-            cassandraDaemon = new CassandraDaemon();
+            cassandraDaemon = new WildflyCassandraDaemon();
             cassandraDaemon.activate();
 
         } catch (Throwable e) {
@@ -60,38 +52,4 @@ public class CassandraService implements Service<CassandraService> {
             cassandraDaemon.deactivate();
         }
     }
-
-    /*private static void cleanupAndLeaveDirs() throws IOException {
-        mkdirs();
-        cleanup();
-        mkdirs();
-
-        // cleanup screws with CommitLog, this brings it back to safe state
-        CommitLog.instance.resetUnsafe();
-    }
-
-    private static void cleanup() throws IOException {
-        // clean up commitlog
-        String[] directoryNames = {DatabaseDescriptor.getCommitLogLocation(),};
-        for (String dirName : directoryNames) {
-            File dir = new File(dirName);
-            if (!dir.exists())
-                throw new RuntimeException("No such directory: " + dir.getAbsolutePath());
-            FileUtils.deleteRecursive(dir);
-        }
-
-        // clean up data directory which are stored as data directory/table/data files
-        for (String dirName : DatabaseDescriptor.getAllDataFileLocations()) {
-            File dir = new File(dirName);
-            if (!dir.exists())
-                throw new RuntimeException("No such directory: " + dir.getAbsolutePath());
-            FileUtils.deleteRecursive(dir);
-        }
-    }
-
-    public static void mkdirs() {
-        DatabaseDescriptor.createAllDirectories();
-    }*/
-
-
 }

@@ -8,6 +8,13 @@
     <includeBaseDirectory>false</includeBaseDirectory>
     <fileSets>
         <fileSet>
+            <directory>${project.basedir}/src/main/resources/cfg</directory>
+            <outputDirectory>standalone/configuration/</outputDirectory>
+            <includes>
+                <include>cassandra.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet>
             <directory>${project.basedir}/src/main/resources/module/main</directory>
             <outputDirectory>modules/system/layers/base/org/wildfly/cassandra/main</outputDirectory>
             <includes>
@@ -18,7 +25,7 @@
                <directory>${project.basedir}/src/main/resources/module/main</directory>
                <outputDirectory>modules/system/layers/base/org/wildfly/cassandra/main/conf</outputDirectory>
                <includes>
-                   <include>cassandra.yaml</include>
+                   <!-- TODO: this should be turned into DMR config as well -->
                    <include>cassandra-rackdc.properties</include>
                </includes>
            </fileSet>

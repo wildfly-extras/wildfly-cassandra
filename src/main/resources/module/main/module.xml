@@ -6,7 +6,11 @@
     <resources>
         <artifact name="org.wildfly:cassandra:1.0-SNAPSHOT"/>
 
-        <resource-root path="cassandra-all-2.0.6.jar"/>
+        <!-- cassandra libs -->
+        <resource-root path="cassandra-all-2.0.6-jboss2.jar"/>
+        <resource-root path="cassandra-thrift-2.0.6-jboss2.jar"/>
+
+        <!-- cassandra dependencies -->
         <resource-root path="httpclient-4.2.5.jar"/>
         <resource-root path="httpcore-4.2.4.jar"/>
         <resource-root path="commons-codec-1.2.jar"/>
@@ -34,12 +38,13 @@
         <resource-root path="disruptor-3.0.1.jar"/>
         <resource-root path="libthrift-0.9.1.jar"/>
         <resource-root path="super-csv-2.1.0.jar"/>
-        <resource-root path="cassandra-thrift-2.0.6.jar"/>
         <resource-root path="jamm-0.2.5.jar"/>
         <resource-root path="snakeyaml-1.13.jar"/>
         <resource-root path="concurrentlinkedhashmap-lru-1.4.jar"/>
 
         <resource-root path="netty-3.6.6.Final.jar"/> <!-- TODO: conflicts with netty 4.0.20 in wildfly -->
+
+        <!-- the configuration overlays -->
         <resource-root path="conf"/>
     </resources>
 

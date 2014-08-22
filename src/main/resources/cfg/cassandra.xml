@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<server xmlns="urn:jboss:domain:3.0">
+<server xmlns="urn:jboss:domain:2.1">
 
     <extensions>
         <extension module="org.jboss.as.connector"/>
@@ -65,7 +65,7 @@
     </management>
 
     <profile>
-        <subsystem xmlns="urn:jboss:domain:logging:3.0">
+        <subsystem xmlns="urn:jboss:domain:logging:2.0">
             <console-handler name="CONSOLE">
                 <level name="INFO"/>
                 <formatter>
@@ -99,7 +99,7 @@
                 <level name="ERROR"/>
             </logger>
             <root-logger>
-                <level name="DEBUG"/>
+                <level name="INFO"/>
                 <handlers>
                     <handler name="CONSOLE"/>
                     <handler name="FILE"/>
@@ -114,7 +114,7 @@
         </subsystem>
 
         <subsystem xmlns="urn:wildfly:cassandra:1.0">
-            <cluster name="Wildfly Cluster"
+            <cluster name="WildflyCluster"
                      seed-provider-class-name="org.apache.cassandra.locator.SimpleSeedProvider"
                      seed-provider-seeds="${jboss.bind.address:127.0.0.1}"
                      listen-address="${jboss.bind.address:127.0.0.1}"
@@ -123,8 +123,7 @@
                      data-file-directories="/var/lib/cassandra/data"
                      saved-caches-directory="/var/lib/cassandra/saved_caches"
                      start-rpc="true"
-                     start-native-transport="true"
-                    />
+                     start-native-transport="true"/>
         </subsystem>
 
         <subsystem xmlns="urn:jboss:domain:jmx:1.3">

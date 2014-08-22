@@ -33,7 +33,7 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
     }
 
     protected String getSubsystemXml() throws IOException {
-            return readResource("/default-subsystem.xml");
+            return readResource("/test-subsystem.xml");
         }
 
     /**
