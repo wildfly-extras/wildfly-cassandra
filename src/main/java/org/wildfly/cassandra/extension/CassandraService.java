@@ -30,7 +30,9 @@ import org.jboss.msc.value.InjectedValue;
 import org.wildfly.cassandra.logging.CassandraLogger;
 
 /**
- * The actual cassandra runtime service
+ * The cassandra runtime service.
+ * Delegates to an adapter (@link WildflyCassandraDaemon) that wraps the actual C* services.
+ *
  * @author Heiko Braun
  */
 public class CassandraService implements Service<CassandraService> {
@@ -39,14 +41,15 @@ public class CassandraService implements Service<CassandraService> {
     private static final String CASSANDRA_DATA_FILE_DIR = "cassandra/data";
     private static final String CASSANDRA_SAVED_CACHES_DIR = "cassandra/saved_caches";
     private static final String CASSANDRA_COMMIT_LOG_DIR = "cassandra/commitlog";
-    private final String suffix;
+
+    private final String clusterName;
     private final Config serviceConfig;
 
     private WildflyCassandraDaemon cassandraDaemon;
     private final InjectedValue<PathManager> pathManager = new InjectedValue<PathManager>();
 
-    public CassandraService(String suffix, Config serviceConfig) {
-        this.suffix = suffix;
+    public CassandraService(String clusterName, Config serviceConfig) {
+        this.clusterName = clusterName;
         this.serviceConfig = serviceConfig;
     }
 
@@ -59,12 +62,13 @@ public class CassandraService implements Service<CassandraService> {
     public void start(StartContext context) throws StartException {
 
         try {
-            CassandraLogger.LOGGER.infof("Starting embedded cassandra service '%s'");
+            CassandraLogger.LOGGER.infof("Starting embedded cassandra service '%s'", clusterName);
 
             // resolve the path location
-            serviceConfig.data_file_directories = new String[]{resolve(pathManager.getValue(), CASSANDRA_DATA_FILE_DIR, ServerEnvironment.SERVER_DATA_DIR)};
-            serviceConfig.saved_caches_directory = resolve(pathManager.getValue(), CASSANDRA_SAVED_CACHES_DIR, ServerEnvironment.SERVER_DATA_DIR);
-            serviceConfig.commitlog_directory = resolve(pathManager.getValue(), CASSANDRA_COMMIT_LOG_DIR, ServerEnvironment.SERVER_DATA_DIR);
+            // includes the _clusterName_ suffix to avid conflicts when different configurations are started on the same base system
+            serviceConfig.data_file_directories = new String[]{resolve(pathManager.getValue(), CASSANDRA_DATA_FILE_DIR, ServerEnvironment.SERVER_DATA_DIR)+"/"+clusterName};
+            serviceConfig.saved_caches_directory = resolve(pathManager.getValue(), CASSANDRA_SAVED_CACHES_DIR, ServerEnvironment.SERVER_DATA_DIR)+"/"+clusterName;
+            serviceConfig.commitlog_directory = resolve(pathManager.getValue(), CASSANDRA_COMMIT_LOG_DIR, ServerEnvironment.SERVER_DATA_DIR)+"/"+clusterName;
 
             // static injection needed due to the way C* initialises it's ConfigLoader
             DMRConfigLoader.CASSANDRA_CONFIG = serviceConfig;
@@ -82,7 +86,7 @@ public class CassandraService implements Service<CassandraService> {
     public void stop(StopContext context) {
         if(cassandraDaemon!=null)
         {
-            CassandraLogger.LOGGER.infof("Stopping cassandra service '%s'.", suffix);
+            CassandraLogger.LOGGER.infof("Stopping cassandra service '%s'.", clusterName);
             cassandraDaemon.deactivate();
         }
     }
@@ -91,7 +95,6 @@ public class CassandraService implements Service<CassandraService> {
         return pathManager;
     }
 
-
     private String resolve(PathManager pathManager, String path, String relativeToPath) {
         // discard the relativeToPath if the path is absolute and must not be resolved according
         // to the default relativeToPath value
@@ -99,40 +102,4 @@ public class CassandraService implements Service<CassandraService> {
         return pathManager.resolveRelativePathEntry(path, relativeTo);
     }
 
-
-
-   /* static class PathConfig {
-        private final String dataFileDir;
-        private final String savedCachesDir;
-        private final String commitlogDir;
-
-        private final String dataFileRel;
-        private final String saveCacheRel;
-        private final String cmmitlogRel;
-
-        public PathConfig(String dataFileDir, String dataFileRel,
-                          String savedCachesDir, String saveCacheRel,
-                          String commitlogDir, String commitlogRel) {
-            this.dataFileDir = dataFileDir;
-            this.savedCachesDir = savedCachesDir;
-            this.commitlogDir = commitlogDir;
-
-            this.dataFileRel = dataFileRel;
-            this.saveCacheRel = saveCacheRel;
-            this.cmmitlogRel = commitlogRel;
-        }
-
-        String resolveDataFilePath(PathManager pathManager) {
-            return resolve(pathManager, dataFileDir, dataFileRel);
-        }
-
-        String resolveSavedCachesPath(PathManager pathManager) {
-            return resolve(pathManager, savedCachesDir, saveCacheRel);
-        }
-
-        String resolveCommitlogPath(PathManager pathManager) {
-            return resolve(pathManager, commitlogDir, commitlogDir);
-        }
-
-    }*/
 }

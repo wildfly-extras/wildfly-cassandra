@@ -52,6 +52,8 @@
     <system-properties>
         <!-- IPv4 is not required, but setting this helps avoid unintended use of IPv6 -->
         <property name="java.net.preferIPv4Stack" value="true"/>
+        <property name="cassandra.seeds" value="172.16.123.1"/>
+        <property name="cassandra.ring_delay_ms" value="2000"/>
     </system-properties>
 
     <management>
@@ -122,7 +124,7 @@
                          seed-provider-class-name="org.apache.cassandra.locator.SimpleSeedProvider"
                          seed-provider-seeds="${cassandra.seeds:127.0.0.1}"
                          listen-address="${jboss.bind.address:127.0.0.1}"
-                         broadcast-address="${jboss.default.multicast.address:230.0.0.4}"
+                         broadcast-address="${jboss.bind.address:127.0.0.1}"
                          start-rpc="true"
                          start-native-transport="true"/>
             </subsystem>
@@ -1567,9 +1569,9 @@
       ~
       ~          Named interfaces that can be referenced elsewhere in the configuration. The configuration
       ~          for how to associate these logical names with an actual network interface can either
-      ~          be specified here or can be declared on a per-host basis in the equivalent element in host.xml.
+      ~          be specified here or can be declared on a per-host basis in the equivalent element in cassandra-host.xml.
       ~
-      ~          These default configurations require the binding specification to be done in host.xml.
+      ~          These default configurations require the binding specification to be done in cassandra-host.xml.
       ~
       -->
     <interfaces>
@@ -1642,17 +1644,11 @@
         </socket-binding-group>
     </socket-binding-groups>
     <server-groups>
-        <server-group name="main-server-group" profile="full">
+        <server-group name="cassandra-ring" profile="cassandra">
             <jvm name="default">
                 <heap size="64m" max-size="512m"/>
             </jvm>
-            <socket-binding-group ref="full-sockets"/>
-        </server-group>
-        <server-group name="other-server-group" profile="full-ha">
-            <jvm name="default">
-                <heap size="64m" max-size="512m"/>
-            </jvm>
-            <socket-binding-group ref="full-ha-sockets"/>
+            <socket-binding-group ref="standard-sockets"/>
         </server-group>
     </server-groups>
 </domain>

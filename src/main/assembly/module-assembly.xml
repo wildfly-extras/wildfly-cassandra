@@ -36,6 +36,7 @@
             <outputDirectory>domain/configuration/</outputDirectory>
             <includes>
                 <include>cassandra-domain.xml</include>
+                <include>cassandra-host.xml</include>
             </includes>
         </fileSet>
         <fileSet>

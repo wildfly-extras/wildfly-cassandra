@@ -17,11 +17,6 @@
 
 package org.wildfly.cassandra.extension;
 
-/**
- * @author Heiko Braun
- * @since 20/08/14
- */
-
 import org.apache.cassandra.config.Config;
 import org.apache.cassandra.config.SeedProviderDef;
 import org.jboss.as.controller.AbstractAddStepHandler;
@@ -72,18 +67,16 @@ class ClusterAdd extends AbstractAddStepHandler {
     protected void performRuntime(OperationContext context, ModelNode operation, ModelNode model, ServiceVerificationHandler verificationHandler, List<ServiceController<?>> controllers) throws OperationFailedException {
         final PathAddress address = PathAddress.pathAddress(operation.get(OP_ADDR));
         ModelNode fullTree = Resource.Tools.readModel(context.readResource(PathAddress.EMPTY_ADDRESS));
+
         installRuntimeServices(context, address, fullTree, verificationHandler, controllers);
     }
 
     static void installRuntimeServices(OperationContext context, PathAddress address, ModelNode fullModel, ServiceVerificationHandler verificationHandler, List<ServiceController<?>> controllers) throws OperationFailedException {
-        String suffix = address.getLastElement().getValue();
+        String clusterName = address.getLastElement().getValue();
 
         final Config serviceConfig = createServiceConfig(context, address, fullModel);
+        CassandraService service = new CassandraService(clusterName, serviceConfig);
 
-        // Create path services
-        //String bindingsPath = PATHS.get(BINDINGS_DIRECTORY).resolveModelAttribute(context, model.get(PATH, BINDINGS_DIRECTORY)).asString();
-
-        CassandraService service = new CassandraService(suffix, serviceConfig);
         ServiceController<CassandraService> controller = context.getServiceTarget()
                 .addService(SERVICE_NAME, service)
                 .addListener(verificationHandler)
@@ -124,11 +117,6 @@ class ClusterAdd extends AbstractAddStepHandler {
 
         SeedProviderDef providerDef = new SeedProviderDef(providerConfig);
         cassandraConfig.seed_provider = providerDef;
-        //cassandraConfig.seed_provider.class_name = ClusterDefinition.SEED_PROVIDER.resolveModelAttribute(context, fullModel).asString();
-        //cassandraConfig.seed_provider.parameters = params;
-
-
-
 
         cassandraConfig.listen_address = ClusterDefinition.LISTEN_ADDRESS.resolveModelAttribute(expressionResolver, fullModel).asString();
         cassandraConfig.broadcast_address = ClusterDefinition.BROADCAST_ADDRESS.resolveModelAttribute(expressionResolver, fullModel).asString();
@@ -152,9 +140,12 @@ class ClusterAdd extends AbstractAddStepHandler {
 
         cassandraConfig.endpoint_snitch= ClusterDefinition.ENDPOINT_SNITCH.resolveModelAttribute(context, fullModel).asString();
         cassandraConfig.request_scheduler= ClusterDefinition.REQUEST_SCHEDULER.resolveModelAttribute(context, fullModel).asString();
+
         // TODO: encryption options
         //cassandraConfig.server_encryption_options =
         //cassandraConfig.client_encryption_options =
+
+        // TODO: ring delay configuration (cassandra.ring_delay_ms)
 
         return cassandraConfig;
 
