@@ -62,7 +62,11 @@ The cassandra service can be configured like any other wildfly resource:
  }`
 </pre>
 
+## License
+
+- http://www.apache.org/licenses/LICENSE-2.0.html
 
 ## Resources
 - https://docs.jboss.org/author/display/WFLY8/Documentation
 - http://www.datastax.com/documentation/cassandra/2.0/cassandra/gettingStartedCassandraIntro.html
+
