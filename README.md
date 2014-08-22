@@ -4,8 +4,25 @@
 
 ## Prerequisites
 
-- Wildfly 8.0.1: http://download.jboss.org/wildfly/8.1.0.Final/wildfly-8.1.0.Final.zip
-- Patched cassandra 2.0.6 version: https://github.com/heiko-braun/cassandra
+### Wildfly 8.0.1
+
+Get and install Wildfly 8.0.1: http://download.jboss.org/wildfly/8.1.0.Final/wildfly-8.1.0.Final.zip
+
+It's currently been tested against WF 8.0.1 and the default server configuration (cassdandra.xml) is configured for WF 8.
+But apart from that there should be no reason to not use it on WF 9.
+
+### Patched cassandra 2.0.6 version
+Checkout the patched cassandra version from https://github.com/heiko-braun/cassandra and install it to your local maven repo:
+
+ `ant  mvn-install`
+
+Why not use a stock Cassandra version?
+
+The reason is simple: Cassandra isn't designed to be used an embedded library.
+In particular the CassandraDaemon and some of the core services make heavy use 'System.exit()' calls.
+But in order to embed Cassandra as a managed service (the Wildfly Service Container manages it), we had to remove some of the code
+ that would otherwise break the service contracts in Wildlfy.
+
 
 ## Build & Install
 
