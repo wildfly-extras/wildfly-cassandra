@@ -2,6 +2,11 @@
 
 # Cassandra Subsystem for the Wildfly Application Server
 
+## Prerequisites
+
+- Wildfly 8.0.1: http://download.jboss.org/wildfly/8.1.0.Final/wildfly-8.1.0.Final.zip
+- Patched cassandra 2.0.6 version: https://github.com/heiko-braun/cassandra
+
 ## Build & Install
 
 Build the top level project:
