@@ -1,6 +1,6 @@
 
 
-# Cassandra Subsystem for the Wildfly Application Server
+# Cassandra Subsystem
 
 ## Prerequisites
 
@@ -11,7 +11,7 @@ Get and install Wildfly 8.0.1: http://download.jboss.org/wildfly/8.1.0.Final/wil
 It's currently been tested against WF 8.0.1 and the default server configuration (standalone-cassdandra.xml) is configured for WF 8.
 But apart from that there should be no reason to not use it on WF 9.
 
-### Patched cassandra 2.0.6 version
+### Patched Cassandra 2.0.6 version
 Checkout the patched cassandra version from https://github.com/heiko-braun/cassandra and install it to your local maven repo:
 
  `ant  mvn-install`
@@ -40,7 +40,7 @@ This will add an additional module that contains the cassandra extension and sub
 
 ## Server Configuration Profiles
 
-When installing the cassandra-module.zip it create a custom server profile for both satandalone and domain mode
+When installing the cassandra-module.zip it create a custom server profile for both standalone and domain mode
 ($WILDFLY_HOME/standalone/configuration/standalone-cassandra.xml & $WILDFLY_HOME/domain/configuration/cassandra-domain.xml)
 that can be used to start a pre-configured Wildfly instance:
 
@@ -85,11 +85,6 @@ The cassandra service can be configured like any other wildfly resource:
      }
  }`
 </pre>
-
-
-## Open Issues
-
-- Domain mode doesn't work: We need to decide on and implement the discovery of nodes (seeds)
 
 ## License
 
