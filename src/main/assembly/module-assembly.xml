@@ -28,7 +28,14 @@
             <directory>${project.basedir}/src/main/resources/config</directory>
             <outputDirectory>standalone/configuration/</outputDirectory>
             <includes>
-                <include>cassandra.xml</include>
+                <include>standalone-cassandra.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/main/resources/config</directory>
+            <outputDirectory>domain/configuration/</outputDirectory>
+            <includes>
+                <include>cassandra-domain.xml</include>
             </includes>
         </fileSet>
         <fileSet>

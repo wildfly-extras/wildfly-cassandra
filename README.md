@@ -8,7 +8,7 @@
 
 Get and install Wildfly 8.0.1: http://download.jboss.org/wildfly/8.1.0.Final/wildfly-8.1.0.Final.zip
 
-It's currently been tested against WF 8.0.1 and the default server configuration (cassdandra.xml) is configured for WF 8.
+It's currently been tested against WF 8.0.1 and the default server configuration (standalone-cassdandra.xml) is configured for WF 8.
 But apart from that there should be no reason to not use it on WF 9.
 
 ### Patched cassandra 2.0.6 version
@@ -40,10 +40,11 @@ This will add an additional module that contains the cassandra extension and sub
 
 ## Wildfly Configuration Profile
 
-When installing the cassandra-module.zip it create a custom server profile ($WILDFLY_HOME/standalone/configuration/cassandra.xml)
+When installing the cassandra-module.zip it create a custom server profile
+($WILDFLY_HOME/standalone/configuration/standalone-cassandra.xml & $WILDFLY_HOME/domain/configuration/cassandra-domain.xml)
 that can be used to start a stripped wildfly instance:
 
-`./bin/standalone.sh -c cassandra.xml`
+`./bin/standalone.sh -c standalone-cassandra.xml`
 
 ## Cassandra Configuration
 
@@ -78,6 +79,11 @@ The cassandra service can be configured like any other wildfly resource:
      }
  }`
 </pre>
+
+
+## Open Issues
+
+- Domain mode doesn't work: We need to decide on and implement the discovery of nodes (seeds)
 
 ## License
 
