@@ -18,9 +18,9 @@ Checkout the patched cassandra version from https://github.com/heiko-braun/cassa
 
 Why not use a stock Cassandra version?
 
-The reason is simple: Cassandra isn't designed to be used an embedded library.
+The reason is simple: Cassandra isn't designed to be used as an embedded library.
 In particular the CassandraDaemon and some of the core services make heavy use 'System.exit()' calls.
-But in order to embed Cassandra as a managed service, we had to remove some of the code
+In order to embed Cassandra as a managed service, we had to remove some of the code
  that would otherwise break the service contracts in Wildlfy.
 
 
@@ -62,9 +62,7 @@ The following contents will be installed when you unpack the cassandra-module.zi
 
 ## Server Configuration Profiles
 
-When installing the cassandra-module.zip it create a custom server profile for both standalone and domain mode
-($WILDFLY_HOME/standalone/configuration/standalone-cassandra.xml & $WILDFLY_HOME/domain/configuration/cassandra-domain.xml)
-that can be used to start a pre-configured Wildfly instance:
+The cassandra-module.zip server profiles for both standalone and domain mode that can be used to start a pre-configured Wildfly instance:
 
 ### Standalone Mode
 
@@ -76,7 +74,7 @@ that can be used to start a pre-configured Wildfly instance:
 
 ## Cassandra Configuration
 
-The cassandra service can be configured like any other wildfly resource:
+The service configuration can be accessed like any other wildfly resource:
 
 <pre>
 `[standalone@localhost:9990 /] /subsystem=cassandra/cluster=WildflyCluster:read-resource
@@ -116,7 +114,7 @@ https://github.com/heiko-braun/wildfly-cassandra/wiki/Todo
 
 ## Get In touch
 
-The best to reach out and discuss the cassandra subsystem is currently the Wildfly mailing list and/or the Chat Room:
+The best way to reach out and discuss the cassandra subsystem is currently the Wildfly mailing list and/or the Chat Room:
 
 - Mailing List: https://lists.jboss.org/mailman/listinfo/wildfly-dev
 - IRC: irc://freenode.org/#wildfly
