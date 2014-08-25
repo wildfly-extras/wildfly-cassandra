@@ -24,8 +24,8 @@
         <artifact name="org.wildfly:cassandra:1.0-SNAPSHOT"/>
 
         <!-- cassandra libs -->
-        <resource-root path="cassandra-all-2.0.6-jboss3.jar"/>
-        <resource-root path="cassandra-thrift-2.0.6-jboss3.jar"/>
+        <resource-root path="cassandra-all-2.0.6-jboss4.jar"/>
+        <resource-root path="cassandra-thrift-2.0.6-jboss4.jar"/>
 
         <!-- cassandra dependencies -->
         <resource-root path="httpclient-4.2.5.jar"/>

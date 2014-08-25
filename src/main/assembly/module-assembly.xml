@@ -25,6 +25,20 @@
     <includeBaseDirectory>false</includeBaseDirectory>
     <fileSets>
         <fileSet>
+            <directory>${project.basedir}/src/main/resources/scripts</directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>uninstall-cassandra.sh</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/main/resources/scripts</directory>
+            <outputDirectory>bin</outputDirectory>
+            <includes>
+                <include>nodetool</include>
+            </includes>
+        </fileSet>
+        <fileSet>
             <directory>${project.basedir}/src/main/resources/config</directory>
             <outputDirectory>standalone/configuration/</outputDirectory>
             <includes>
@@ -46,15 +60,15 @@
                 <include>module.xml</include>
             </includes>
         </fileSet>
-           <fileSet>
-               <directory>${project.basedir}/src/main/resources/module/main</directory>
-               <outputDirectory>modules/system/layers/base/org/wildfly/cassandra/main/conf</outputDirectory>
-               <includes>
-                   <!-- TODO: this should be turned into DMR config as well -->
-                   <include>cassandra-rackdc.properties</include>
-               </includes>
-           </fileSet>
-       </fileSets>
+        <fileSet>
+            <directory>${project.basedir}/src/main/resources/module/main</directory>
+            <outputDirectory>modules/system/layers/base/org/wildfly/cassandra/main/conf</outputDirectory>
+            <includes>
+                <!-- TODO: this should be turned into DMR config as well -->
+                <include>cassandra-rackdc.properties</include>
+            </includes>
+        </fileSet>
+    </fileSets>
     <dependencySets>
         <dependencySet>
             <useTransitiveDependencies>true</useTransitiveDependencies>
@@ -69,9 +83,9 @@
                 <include>commons-codec:commons-codec</include>
                 <include>org.apache.commons:commons-lang3</include>
                 <include>org.antlr:antlr</include>
-                    <include>org.antlr:antlr-runtime</include>
-                    <include>org.antlr:stringtemplate</include>
-                    <include>antlr:antlr</include>
+                <include>org.antlr:antlr-runtime</include>
+                <include>org.antlr:stringtemplate</include>
+                <include>antlr:antlr</include>
                 <include>org.codehaus.jackson:jackson-core-asl</include>
                 <include>org.codehaus.jackson:jackson-mapper-asl</include>
                 <include>jline:jline</include>
@@ -85,8 +99,8 @@
                 <include>com.lmax:disruptor</include>
                 <include>net.sf.supercsv</include>
                 <include>org.apache.thrift</include>
-                    <include>org.apache.httpcomponents:httpclient</include>
-                    <include>org.apache.httpcomponents:httpcore</include>
+                <include>org.apache.httpcomponents:httpclient</include>
+                <include>org.apache.httpcomponents:httpcore</include>
                 <include>org.apache.cassandra:cassandra-thrift</include>
                 <include>com.github.stephenc:jamm:jar</include>
 
