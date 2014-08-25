@@ -66,9 +66,14 @@ public class CassandraService implements Service<CassandraService> {
 
             // resolve the path location
             // includes the _clusterName_ suffix to avid conflicts when different configurations are started on the same base system
-            serviceConfig.data_file_directories = new String[]{resolve(pathManager.getValue(), CASSANDRA_DATA_FILE_DIR, ServerEnvironment.SERVER_DATA_DIR)+"/"+clusterName};
-            serviceConfig.saved_caches_directory = resolve(pathManager.getValue(), CASSANDRA_SAVED_CACHES_DIR, ServerEnvironment.SERVER_DATA_DIR)+"/"+clusterName;
-            serviceConfig.commitlog_directory = resolve(pathManager.getValue(), CASSANDRA_COMMIT_LOG_DIR, ServerEnvironment.SERVER_DATA_DIR)+"/"+clusterName;
+            if(null==serviceConfig.data_file_directories)
+                serviceConfig.data_file_directories = new String[]{resolve(pathManager.getValue(), CASSANDRA_DATA_FILE_DIR, ServerEnvironment.SERVER_DATA_DIR)+"/"+clusterName};
+
+            if(null==serviceConfig.saved_caches_directory)
+                serviceConfig.saved_caches_directory = resolve(pathManager.getValue(), CASSANDRA_SAVED_CACHES_DIR, ServerEnvironment.SERVER_DATA_DIR)+"/"+clusterName;
+
+            if(null==serviceConfig.commitlog_directory)
+                serviceConfig.commitlog_directory = resolve(pathManager.getValue(), CASSANDRA_COMMIT_LOG_DIR, ServerEnvironment.SERVER_DATA_DIR)+"/"+clusterName;
 
             // static injection needed due to the way C* initialises it's ConfigLoader
             DMRConfigLoader.CASSANDRA_CONFIG = serviceConfig;

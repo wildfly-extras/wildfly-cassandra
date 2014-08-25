@@ -157,24 +157,24 @@ public class ClusterDefinition extends PersistentResourceDefinition {
                     .setRestartAllServices()
                     .build();
 
-   /* static final SimpleAttributeDefinition DATA_FILE_DIR =
-            new SimpleAttributeDefinitionBuilder(CassandraModel.DATA_FILE_DIR, ModelType.STRING, false)
+    static final SimpleAttributeDefinition DATA_FILE_DIR =
+            new SimpleAttributeDefinitionBuilder(CassandraModel.DATA_FILE_DIR, ModelType.STRING, true)
                     .setAllowExpression(true)
                     .setRestartAllServices()
                     .build();
 
     static final SimpleAttributeDefinition SAVED_CACHES_DIR =
-            new SimpleAttributeDefinitionBuilder(CassandraModel.SAVED_CACHES_DIR, ModelType.STRING, false)
+            new SimpleAttributeDefinitionBuilder(CassandraModel.SAVED_CACHES_DIR, ModelType.STRING, true)
                     .setAllowExpression(true)
                     .setRestartAllServices()
                     .build();
 
     static final SimpleAttributeDefinition COMMIT_LOG_DIR =
-            new SimpleAttributeDefinitionBuilder(CassandraModel.COMMIT_LOG_DIR, ModelType.STRING, false)
+            new SimpleAttributeDefinitionBuilder(CassandraModel.COMMIT_LOG_DIR, ModelType.STRING, true)
                     .setAllowExpression(true)
                     .setRestartAllServices()
                     .build();
-*/
+
     static final SimpleAttributeDefinition COMMIT_LOG_SYNC =
             new SimpleAttributeDefinitionBuilder(CassandraModel.COMMIT_LOG_SYNC, ModelType.STRING, true)
                     .setAllowExpression(false)
@@ -230,6 +230,7 @@ public class ClusterDefinition extends PersistentResourceDefinition {
             LISTEN_ADDRESS, BROADCAST_ADDRESS,
             START_NATIVE_TRANSPORT, NATIVE_TRANSPORT_PORT,
             START_RPC, RPC_PORT,
+            COMMIT_LOG_DIR, SAVED_CACHES_DIR, DATA_FILE_DIR,
             INTERNODE_AUTHENTICATOR,
             COMMIT_LOG_SYNC, COMMIT_LOG_SYNC_PERIOD,
             ENDPOINT_SNITCH,

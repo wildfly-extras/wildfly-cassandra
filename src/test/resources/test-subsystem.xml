@@ -22,5 +22,6 @@
              listen-address="127.0.0.1"
              broadcast-address="230.0.0.4"
              start-rpc="true"
-             start-native-transport="true"/>
+             start-native-transport="true"
+             data-file-directories="data_dir"/>
 </subsystem>
