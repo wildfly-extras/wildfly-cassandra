@@ -15,9 +15,10 @@
  *  limitations under the License.
  */
 
-package org.wildfly.cassandra.extension;
+package org.wildfly.extension.cassandra;
 
 import org.jboss.as.subsystem.test.AbstractSubsystemBaseTest;
+import org.wildfly.extension.cassandra.CassandraExtension;
 
 import java.io.IOException;
 

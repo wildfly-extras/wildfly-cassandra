@@ -30,22 +30,22 @@ Build the top level project:
 
 `mvn clean install`
 
-This will also create a cassandra-module.zip, that can be installed on Wildfly:
+This will also create a wildfly-cassandra-module.zip, that can be installed on Wildfly:
 
-`unzip target/cassandra-module.zip -d $WILDFLY_HOME`
+`unzip target/wildfly-cassandra-module.zip -d $WILDFLY_HOME`
 
 This will add an additional module that contains the cassandra extension and subsystem:
 
-`modules/system/layers/base/org/wildfly/cassandra/main/`
+`modules/system/layers/base/org/wildfly/extension/cassandra/main/`
 
 ### Package Contents
 
-The following contents will be installed when you unpack the cassandra-module.zip:
+The following contents will be installed when you unpack the wildfly-cassandra-module.zip:
 
 <pre>
  bin/nodetool (1)
- modules/system/layers/base/org/wildfly/cassandra/main/module.xml (2)
- modules/system/layers/base/org/wildfly/cassandra/main/*.jar (3)
+ modules/system/layers/base/org/wildfly/extension/cassandra/main/module.xml (2)
+ modules/system/layers/base/org/wildfly/extension/cassandra/main/*.jar (3)
  standalone/configuration/standalone-cassandra.xml (4)
  domain/configuration/cassandra-domain.xml (5)
  domain/configuration/cassandra-host.xml (6)
@@ -62,7 +62,7 @@ The following contents will be installed when you unpack the cassandra-module.zi
 
 ## Server Configuration Profiles
 
-The cassandra-module.zip server profiles for both standalone and domain mode that can be used to start a pre-configured Wildfly instance:
+The wildfly-cassandra-module.zip server profiles for both standalone and domain mode that can be used to start a pre-configured Wildfly instance:
 
 ### Standalone Mode
 

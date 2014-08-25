@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.cassandra.extension;
+package org.wildfly.extension.cassandra;
 
 import org.apache.cassandra.config.Config;
 import org.jboss.as.controller.services.path.AbsolutePathService;
@@ -27,7 +27,6 @@ import org.jboss.msc.service.StartContext;
 import org.jboss.msc.service.StartException;
 import org.jboss.msc.service.StopContext;
 import org.jboss.msc.value.InjectedValue;
-import org.wildfly.cassandra.logging.CassandraLogger;
 
 /**
  * The cassandra runtime service.

@@ -27,7 +27,7 @@
         <extension module="org.jboss.as.remoting"/>
         <extension module="org.jboss.as.security"/>
         <extension module="org.wildfly.extension.io"/>
-        <extension module="org.wildfly.cassandra"/>
+        <extension module="org.wildfly.extension.cassandra"/>
     </extensions>
 
     <management>

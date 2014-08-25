@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.cassandra.extension;
+package org.wildfly.extension.cassandra;
 
 import org.jboss.as.controller.AttributeDefinition;
 import org.jboss.as.controller.OperationContext;

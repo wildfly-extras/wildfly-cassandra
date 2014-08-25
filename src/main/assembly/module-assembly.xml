@@ -55,14 +55,14 @@
         </fileSet>
         <fileSet>
             <directory>${project.basedir}/src/main/resources/module/main</directory>
-            <outputDirectory>modules/system/layers/base/org/wildfly/cassandra/main</outputDirectory>
+            <outputDirectory>modules/system/layers/base/org/wildfly/extension/cassandra/main</outputDirectory>
             <includes>
                 <include>module.xml</include>
             </includes>
         </fileSet>
         <fileSet>
             <directory>${project.basedir}/src/main/resources/module/main</directory>
-            <outputDirectory>modules/system/layers/base/org/wildfly/cassandra/main/conf</outputDirectory>
+            <outputDirectory>modules/system/layers/base/org/wildfly/extension/cassandra/main/conf</outputDirectory>
             <includes>
                 <!-- TODO: this should be turned into DMR config as well -->
                 <include>cassandra-rackdc.properties</include>
@@ -73,7 +73,7 @@
         <dependencySet>
             <useTransitiveDependencies>true</useTransitiveDependencies>
             <useTransitiveFiltering>true</useTransitiveFiltering>
-            <outputDirectory>modules/system/layers/base/org/wildfly/cassandra/main</outputDirectory>
+            <outputDirectory>modules/system/layers/base/org/wildfly/extension/cassandra/main</outputDirectory>
             <includes>
                 <include>org.apache.cassandra:cassandra-all</include>
                 <include>org.xerial.snappy:snappy-java</include>

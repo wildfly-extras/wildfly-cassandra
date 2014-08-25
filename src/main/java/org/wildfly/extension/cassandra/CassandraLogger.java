@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.cassandra.logging;
+package org.wildfly.extension.cassandra;
 
 import org.jboss.logging.BasicLogger;
 import org.jboss.logging.Logger;

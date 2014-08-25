@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.cassandra.extension;
+package org.wildfly.extension.cassandra;
 
 /**
  * @author Heiko Braun

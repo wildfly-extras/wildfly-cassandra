@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.cassandra.extension;
+package org.wildfly.extension.cassandra;
 
 import com.addthis.metrics.reporter.config.ReporterConfig;
 import com.google.common.collect.Iterables;
@@ -49,7 +49,6 @@ import org.apache.cassandra.utils.CLibrary;
 import org.apache.cassandra.utils.FBUtilities;
 import org.apache.cassandra.utils.Mx4jTool;
 import org.apache.cassandra.utils.Pair;
-import org.wildfly.cassandra.logging.CassandraLogger;
 
 import javax.management.MBeanServer;
 import javax.management.ObjectName;

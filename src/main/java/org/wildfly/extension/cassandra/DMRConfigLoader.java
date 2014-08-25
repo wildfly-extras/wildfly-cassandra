@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.cassandra.extension;
+package org.wildfly.extension.cassandra;
 
 import org.apache.cassandra.config.Config;
 import org.apache.cassandra.config.ConfigurationLoader;

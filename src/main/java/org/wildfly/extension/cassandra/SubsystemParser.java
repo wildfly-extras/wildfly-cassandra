@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.cassandra.extension;
+package org.wildfly.extension.cassandra;
 
 import org.jboss.as.controller.PathAddress;
 import org.jboss.as.controller.PersistentResourceXMLDescription;

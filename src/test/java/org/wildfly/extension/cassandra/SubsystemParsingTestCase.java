@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.cassandra.extension;
+package org.wildfly.extension.cassandra;
 
 
 import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.ADD;
@@ -33,6 +33,7 @@ import org.jboss.as.subsystem.test.KernelServices;
 import org.jboss.dmr.ModelNode;
 import org.junit.Assert;
 import org.junit.Test;
+import org.wildfly.extension.cassandra.CassandraExtension;
 
 
 /**

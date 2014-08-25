@@ -48,7 +48,7 @@ else
 fi
 
 # jboss local classpath
-for jar in modules/system/layers/base/org/wildfly/cassandra/main/*.jar; do
+for jar in modules/system/layers/base/org/wildfly/extension/cassandra/main/*.jar; do
     CLASSPATH="$CLASSPATH:$jar"
 done
 

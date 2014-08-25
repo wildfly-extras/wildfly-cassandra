@@ -46,7 +46,7 @@
         <extension module="org.wildfly.extension.batch"/>
         <extension module="org.wildfly.extension.io"/>
         <extension module="org.wildfly.extension.undertow"/>
-        <extension module="org.wildfly.cassandra"/>
+        <extension module="org.wildfly.extension.cassandra"/>
     </extensions>
 
     <system-properties>
