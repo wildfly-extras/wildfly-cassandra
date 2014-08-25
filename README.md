@@ -8,7 +8,7 @@
 
 Get and install Wildfly 8.1.0: http://download.jboss.org/wildfly/8.1.0.Final/wildfly-8.1.0.Final.zip
 
-It's currently been tested against WF 8.0.1 and the default server configuration (standalone-cassdandra.xml) is configured for WF 8.
+It's currently been tested against WF 8.1.0 and the default server configuration (standalone-cassdandra.xml) is configured for WF 8.
 But apart from that there should be no reason to not use it on WF 9.
 
 ### Patched Cassandra 2.0.6 version
