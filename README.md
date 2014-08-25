@@ -4,9 +4,9 @@
 
 ## Prerequisites
 
-### Wildfly 8.0.1
+### Wildfly 8.1.0
 
-Get and install Wildfly 8.0.1: http://download.jboss.org/wildfly/8.1.0.Final/wildfly-8.1.0.Final.zip
+Get and install Wildfly 8.1.0: http://download.jboss.org/wildfly/8.1.0.Final/wildfly-8.1.0.Final.zip
 
 It's currently been tested against WF 8.0.1 and the default server configuration (standalone-cassdandra.xml) is configured for WF 8.
 But apart from that there should be no reason to not use it on WF 9.
