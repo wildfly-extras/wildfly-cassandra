@@ -38,6 +38,28 @@ This will add an additional module that contains the cassandra extension and sub
 
 `modules/system/layers/base/org/wildfly/cassandra/main/`
 
+### Package Contents
+
+The following contents will be installed when you unpack the cassandra-module.zip:
+
+<pre>
+ bin/nodetool (1)
+ modules/system/layers/base/org/wildfly/cassandra/main/module.xml (2)
+ modules/system/layers/base/org/wildfly/cassandra/main/*.jar (3)
+ standalone/configuration/standalone-cassandra.xml (4)
+ domain/configuration/cassandra-domain.xml (5)
+ domain/configuration/cassandra-host.xml (6)
+</pre>
+
+<ol>
+    <li> A patched nodetool that allows full JMX urls (i.e service:jmx:http-remoting-jmx://127.0.0.1:9990)
+    <li> The module descriptor
+    <li> Required libraries to run cassandra omn Wildfly
+    <li> An example configuration for standalone servers
+    <li> An example configuration for managed domains
+    <li> An example host configuration (seed nodes)
+</ol>
+
 ## Server Configuration Profiles
 
 When installing the cassandra-module.zip it create a custom server profile for both standalone and domain mode
