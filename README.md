@@ -86,6 +86,19 @@ The cassandra service can be configured like any other wildfly resource:
  }`
 </pre>
 
+## Open Issues
+
+We track ideas and open issues in the Wiki. Contributions are welcome:
+
+https://github.com/heiko-braun/wildfly-cassandra/wiki/Todo
+
+## Get In touch
+
+The best to reach out and discuss the cassandra subsystem is currently the Wildfly mailing list and/or the Chat Room:
+
+- Mailing List: https://lists.jboss.org/mailman/listinfo/wildfly-dev
+- IRC: irc://freenode.org/#wildfly
+
 ## License
 
 - http://www.apache.org/licenses/LICENSE-2.0.html
