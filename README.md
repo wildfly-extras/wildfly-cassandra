@@ -54,7 +54,7 @@ The following contents will be installed when you unpack the wildfly-cassandra-m
 <ol>
     <li> A patched nodetool that allows full JMX urls (i.e service:jmx:http-remoting-jmx://127.0.0.1:9990)
     <li> The module descriptor
-    <li> Required libraries to run cassandra omn Wildfly
+    <li> Required libraries to run cassandra on Wildfly
     <li> An example configuration for standalone servers
     <li> An example configuration for managed domains
     <li> An example host configuration (seed nodes)
