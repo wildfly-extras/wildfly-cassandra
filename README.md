@@ -16,13 +16,7 @@ Checkout the patched cassandra version from https://github.com/heiko-braun/cassa
 
  `ant  mvn-install`
 
-Why not use a stock Cassandra version?
-
-The reason is simple: Cassandra isn't designed to be used as an embedded library.
-In particular the CassandraDaemon and some of the core services make heavy use 'System.exit()' calls.
-In order to embed Cassandra as a managed service, we had to remove some of the code
- that would otherwise break the service contracts in Wildlfy.
-
+(We'll update to Cassandra trunk soon, as the related patches for embedding cassandra have now been accepted: See https://issues.apache.org/jira/browse/CASSANDRA-7997 )
 
 ## Build & Install
 
@@ -106,18 +100,17 @@ The service configuration can be accessed like any other wildfly resource:
  }`
 </pre>
 
-## Open Issues
+## Issues
 
-We track ideas and open issues in the Wiki. Contributions are welcome:
-
-https://github.com/heiko-braun/wildfly-cassandra/wiki/Todo
+If you discover any problems or see room for improvement, feel free to file an issue and we'll discuss it:
+https://github.com/rhq-project/wildfly-cassandra/issues
 
 ## Get In touch
 
-The best way to reach out and discuss the cassandra subsystem is currently the Wildfly mailing list and/or the Chat Room:
+The best way to reach out and discuss the cassandra subsystem is currently the RHQ mailing list and/or the Chat Room:
 
-- Mailing List: https://lists.jboss.org/mailman/listinfo/wildfly-dev
-- IRC: irc://freenode.org/#wildfly
+- Mailing List: https://lists.fedorahosted.org/mailman/listinfo/rhq-devel
+- IRC: irc://freenode.org/#rhq
 
 ## License
 
