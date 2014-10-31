@@ -38,7 +38,7 @@
         <version.junit>4.11</version.junit>
         <version.org.jboss.logging.jboss-logging>3.1.4.GA</version.org.jboss.logging.jboss-logging>
         <version.org.jboss.logging.jboss-logging-tools>1.2.0.Final</version.org.jboss.logging.jboss-logging-tools>
-        <version.cassandra.all>2.0.6-jboss4</version.cassandra.all>
+        <version.cassandra.all>3.0.0-SNAPSHOT</version.cassandra.all>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>org.wildfly.extension.cassandra</module.name>
     </properties>

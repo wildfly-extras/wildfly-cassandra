@@ -21,11 +21,12 @@
     </properties>
 
     <resources>
-        <artifact name="org.wildfly:cassandra:1.0-SNAPSHOT"/>
+        <!-- the subsystem itself -->
+        <resource-root path="wildfly-cassandra.jar"/>
 
         <!-- cassandra libs -->
-        <resource-root path="cassandra-all-2.0.6-jboss4.jar"/>
-        <resource-root path="cassandra-thrift-2.0.6-jboss4.jar"/>
+        <resource-root path="cassandra-all-3.0.0-SNAPSHOT.jar"/>
+        <resource-root path="cassandra-thrift-3.0.0-SNAPSHOT.jar"/>
 
         <!-- cassandra dependencies -->
         <resource-root path="httpclient-4.2.5.jar"/>
@@ -34,32 +35,33 @@
         <resource-root path="snappy-java-1.0.5.jar"/>
         <resource-root path="lz4-1.2.0.jar"/>
         <resource-root path="compress-lzf-0.8.4.jar"/>
-        <resource-root path="guava-15.0.jar"/>
+        <resource-root path="guava-16.0.jar"/>
         <resource-root path="commons-lang3-3.1.jar"/>
-        <resource-root path="antlr-3.2.jar"/>
-        <resource-root path="antlr-runtime-3.2.jar"/>
-        <resource-root path="stringtemplate-3.2.jar"/>
-        <resource-root path="antlr-2.7.7.jar"/>
+        <resource-root path="commons-math3-3.2.jar"/>
+        <resource-root path="antlr-3.5.2.jar"/>
+        <resource-root path="antlr-runtime-3.5.2.jar"/>
+        <resource-root path="stringtemplate-4.0.2.jar"/>
         <resource-root path="jackson-core-asl-1.9.2.jar"/>
         <resource-root path="jackson-mapper-asl-1.9.2.jar"/>
-        <resource-root path="jline-1.0.jar"/>
         <resource-root path="json-simple-1.1.jar"/>
-        <resource-root path="high-scale-lib-1.1.2.jar"/>
-        <resource-root path="snaptree-0.1.jar"/>
+        <resource-root path="high-scale-lib-1.0.6.jar"/>
         <resource-root path="jbcrypt-0.3m.jar"/>
         <resource-root path="metrics-core-2.2.0.jar"/>
         <resource-root path="reporter-config-2.1.0.jar"/>
         <resource-root path="hibernate-validator-4.3.0.Final.jar"/>
         <resource-root path="validation-api-1.0.0.GA.jar"/>
-        <resource-root path="thrift-server-0.3.3.jar"/>
+        <resource-root path="thrift-server-0.3.5.jar"/>
         <resource-root path="disruptor-3.0.1.jar"/>
         <resource-root path="libthrift-0.9.1.jar"/>
         <resource-root path="super-csv-2.1.0.jar"/>
-        <resource-root path="jamm-0.2.5.jar"/>
+        <resource-root path="jamm-0.2.6.jar"/>
         <resource-root path="snakeyaml-1.13.jar"/>
         <resource-root path="concurrentlinkedhashmap-lru-1.4.jar"/>
+        <resource-root path="sigar-1.6.4.jar"/>
+        <resource-root path="stream-2.5.2.jar"/>
+        <resource-root path="fastutil-6.5.7.jar"/>
 
-        <resource-root path="netty-3.6.6.Final.jar"/> <!-- TODO: conflicts with netty 4.0.20 in wildfly -->
+        <resource-root path="netty-all-4.0.23.Final.jar"/>
 
         <!-- the configuration overlays -->
         <resource-root path="conf"/>

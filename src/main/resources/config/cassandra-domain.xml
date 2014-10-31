@@ -54,6 +54,7 @@
         <property name="java.net.preferIPv4Stack" value="true"/>
         <property name="cassandra.seeds" value="172.16.123.1"/>
         <property name="cassandra.ring_delay_ms" value="2000"/>
+        <property name="cassandra.boot_without_jna" value="true"/>
     </system-properties>
 
     <management>
