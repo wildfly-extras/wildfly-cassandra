@@ -68,6 +68,13 @@
                 <include>cassandra-rackdc.properties</include>
             </includes>
         </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/target</directory>
+            <outputDirectory>modules/system/layers/base/org/wildfly/extension/cassandra/main</outputDirectory>
+            <includes>
+                <include>wildfly-cassandra.jar</include>
+            </includes>
+        </fileSet>
     </fileSets>
     <dependencySets>
         <dependencySet>
@@ -76,6 +83,8 @@
             <outputDirectory>modules/system/layers/base/org/wildfly/extension/cassandra/main</outputDirectory>
             <includes>
                 <include>org.apache.cassandra:cassandra-all</include>
+                <include>org.apache.cassandra:cassandra-thrift</include>
+
                 <include>org.xerial.snappy:snappy-java</include>
                 <include>net.jpountz.lz4:lz4</include>
                 <include>com.ning:compress-lzf</include>
@@ -85,13 +94,10 @@
                 <include>org.antlr:antlr</include>
                 <include>org.antlr:antlr-runtime</include>
                 <include>org.antlr:stringtemplate</include>
-                <include>antlr:antlr</include>
                 <include>org.codehaus.jackson:jackson-core-asl</include>
                 <include>org.codehaus.jackson:jackson-mapper-asl</include>
-                <include>jline:jline</include>
                 <include>com.googlecode.json-simple</include>
-                <include>com.github.stephenc.high-scale-lib</include>
-                <include>edu.stanford.ppl:snaptree</include>
+                <include>com.boundary:high-scale-lib</include>
                 <include>org.mindrot:jbcrypt</include>
                 <include>com.yammer.metrics:metrics-core</include>
                 <include>com.addthis.metrics:reporter-config</include>
@@ -101,13 +107,15 @@
                 <include>org.apache.thrift</include>
                 <include>org.apache.httpcomponents:httpclient</include>
                 <include>org.apache.httpcomponents:httpcore</include>
-                <include>org.apache.cassandra:cassandra-thrift</include>
-                <include>com.github.stephenc:jamm:jar</include>
 
+                <include>com.github.jbellis:jamm</include>
+                <include>net.java.dev.jna:jna</include>
                 <include>org.yaml:snakeyaml</include>
+                <include>com.clearspring.analytics:stream</include>
+                <include>it.unimi.dsi:fastutil</include>
 
                 <include>com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru</include>
-                <include>io.netty:netty</include>
+                <include>io.netty:netty-all</include>
             </includes>
         </dependencySet>
 

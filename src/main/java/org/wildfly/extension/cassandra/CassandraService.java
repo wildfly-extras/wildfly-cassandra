@@ -18,6 +18,7 @@
 package org.wildfly.extension.cassandra;
 
 import org.apache.cassandra.config.Config;
+import org.apache.cassandra.service.CassandraDaemon;
 import org.jboss.as.controller.services.path.AbsolutePathService;
 import org.jboss.as.controller.services.path.PathManager;
 import org.jboss.as.server.ServerEnvironment;
@@ -30,7 +31,7 @@ import org.jboss.msc.value.InjectedValue;
 
 /**
  * The cassandra runtime service.
- * Delegates to an adapter (@link WildflyCassandraDaemon) that wraps the actual C* services.
+ * Delegates to an adapter {@link CassandraDaemon} that wraps the actual C* services.
  *
  * @author Heiko Braun
  */
@@ -44,7 +45,7 @@ public class CassandraService implements Service<CassandraService> {
     private final String clusterName;
     private final Config serviceConfig;
 
-    private WildflyCassandraDaemon cassandraDaemon;
+    private CassandraDaemon cassandraDaemon;
     private final InjectedValue<PathManager> pathManager = new InjectedValue<PathManager>();
 
     public CassandraService(String clusterName, Config serviceConfig) {
@@ -76,9 +77,10 @@ public class CassandraService implements Service<CassandraService> {
 
             // static injection needed due to the way C* initialises it's ConfigLoader
             DMRConfigLoader.CASSANDRA_CONFIG = serviceConfig;
+
             System.setProperty("cassandra.config.loader", DMRConfigLoader.class.getName());
 
-            cassandraDaemon = new WildflyCassandraDaemon();
+            cassandraDaemon = new CassandraDaemon(true);
             cassandraDaemon.activate();
 
         } catch (Throwable e) {

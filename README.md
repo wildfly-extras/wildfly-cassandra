@@ -11,12 +11,14 @@ Get and install Wildfly 8.1.0: http://download.jboss.org/wildfly/8.1.0.Final/wil
 It's currently been tested against WF 8.1.0 and the default server configuration (standalone-cassdandra.xml) is configured for WF 8.
 But apart from that there should be no reason to not use it on WF 9.
 
-### Patched Cassandra 2.0.6 version
-Checkout the patched cassandra version from https://github.com/heiko-braun/cassandra and install it to your local maven repo:
+### Cassandra Trunk (> 31.10.2014)
+Checkout and build cassandra trunk from the apache repo. This will put it to your local maven repo:
 
- `ant  mvn-install`
+`git clone http://git-wip-us.apache.org/repos/asf/cassandra.git cassandra-trunk`
 
-(We'll update to Cassandra trunk soon, as the related patches for embedding cassandra have now been accepted: See https://issues.apache.org/jira/browse/CASSANDRA-7997 )
+ `cd cassandra-trunk; ant  mvn-install`
+
+(For further details on how to build cassandra please see http://wiki.apache.org/cassandra/HowToContribute)
 
 ## Build & Install
 
@@ -60,7 +62,9 @@ The wildfly-cassandra-module.zip server profiles for both standalone and domain 
 
 ### Standalone Mode
 
-`./bin/standalone.sh -c standalone-cassandra.xml -b 127.0.0.1`
+`./bin/standalone.sh -c standalone-cassandra.xml -b 127.0.0.1 -Dcassandra.boot_without_jna=true`
+
+(yes, the jna switch matters)
 
 ### Domain Mode
 
