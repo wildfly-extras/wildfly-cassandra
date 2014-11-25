@@ -54,7 +54,7 @@
         <resource-root path="disruptor-3.0.1.jar"/>
         <resource-root path="libthrift-0.9.1.jar"/>
         <resource-root path="super-csv-2.1.0.jar"/>
-        <resource-root path="jamm-0.2.6.jar"/>
+        <resource-root path="jamm-0.3.0.jar"/>
         <resource-root path="snakeyaml-1.13.jar"/>
         <resource-root path="concurrentlinkedhashmap-lru-1.4.jar"/>
         <resource-root path="sigar-1.6.4.jar"/>
