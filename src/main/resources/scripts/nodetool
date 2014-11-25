@@ -1,4 +1,4 @@
-#!/bin/sh
+﻿#!/bin/sh
 # Licensed to the Apache Software Foundation (ASF) under one
 # or more contributor license agreements.  See the NOTICE file
 # distributed with this work for additional information
@@ -48,7 +48,7 @@ else
 fi
 
 # jboss local classpath
-for jar in modules/system/layers/base/org/wildfly/extension/cassandra/main/*.jar; do
+for jar in $JBOSS_HOME/modules/system/layers/base/org/wildfly/extension/cassandra/main/*.jar; do
     CLASSPATH="$CLASSPATH:$jar"
 done
 
@@ -96,12 +96,12 @@ case "`uname`" in
 esac
 
 #jboss client jar
-JBOSS_HOME=/Users/hbraun/dev/env/wildfly-8.1.0.Final
 CLASSPATH=$CLASSPATH:$JBOSS_HOME/bin/client/jboss-cli-client.jar
 "$JAVA" $JAVA_AGENT -cp "$CLASSPATH" \
       -Xmx32m \
+      -Dcassandra.storagedir="$cassandra_storagedir" \
       -Dlog4j.configuration=log4j-tools.properties \
       -Dstorage-config="$CASSANDRA_CONF" \
-      org.apache.cassandra.tools.NodeCmd $ARGS
+      org.apache.cassandra.tools.NodeTool $ARGS
 
 # vi:ai sw=4 ts=4 tw=0 et
