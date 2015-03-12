@@ -25,8 +25,8 @@
         <resource-root path="wildfly-cassandra.jar"/>
 
         <!-- cassandra libs -->
-        <resource-root path="cassandra-all-3.0.0-SNAPSHOT.jar"/>
-        <resource-root path="cassandra-thrift-3.0.0-SNAPSHOT.jar"/>
+        <resource-root path="cassandra-all-2.1.3-jboss1.jar"/>
+        <resource-root path="cassandra-thrift-2.1.3-jboss1.jar"/>
 
         <!-- cassandra dependencies -->
         <resource-root path="httpclient-4.2.5.jar"/>
@@ -50,14 +50,14 @@
         <resource-root path="reporter-config-2.1.0.jar"/>
         <resource-root path="hibernate-validator-4.3.0.Final.jar"/>
         <resource-root path="validation-api-1.0.0.GA.jar"/>
-        <resource-root path="thrift-server-0.3.5.jar"/>
+        <resource-root path="thrift-server-0.3.7.jar"/>
         <resource-root path="disruptor-3.0.1.jar"/>
-        <resource-root path="libthrift-0.9.1.jar"/>
+        <resource-root path="libthrift-0.9.2.jar"/>
         <resource-root path="super-csv-2.1.0.jar"/>
         <resource-root path="jamm-0.3.0.jar"/>
         <resource-root path="snakeyaml-1.13.jar"/>
         <resource-root path="concurrentlinkedhashmap-lru-1.4.jar"/>
-        <resource-root path="sigar-1.6.4.jar"/>
+        <!--<resource-root path="sigar-1.6.4.jar"/>-->
         <resource-root path="stream-2.5.2.jar"/>
         <resource-root path="fastutil-6.5.7.jar"/>
 
